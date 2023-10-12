@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;700&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    background-color: #e6e6e63b;
+}
+
+* {
+    font-family: 'Kanit', sans-serif;
+}
+
+#nav_text {
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text1 {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#menu_img {
+    width: 2%;
+    margin: 10px;
+    padding: 10px;
+}
+
+.showMenu {
+    background: #d7e4f3f3;
+    border-radius: 5px;
+    position: absolute;
+    top: 12%;
+    right: 1%;
+    width: 125px;
+    height: 0%;
+    overflow: hidden;
+    /* display: none; */
+    transition: height 0.5s;
+}
+
+.showMenu.open_menu {
+    /* display: block; */
+    height: 213.75px;
+    box-shadow: 0px 0px 5px 2px rgba(128, 128, 128, 0.561);
+}
+
+#list_ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+    padding-inline-start: 0px;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+}
+
+#list_ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #142D4C;
+}
+
+#list_ul li img {
+    width: 15%;
+    margin: 10px;
+}
+
+#list_ul li span:hover {
+    color: grey;
+}
+
+#feature_div {
+    /* border: 2px solid black; */
+    display: flex;
+    overflow-x: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px 10px 15px 10px;
+}
+
+.feature {
+    /* border: 2px solid blue; */
+    min-width: 30%;
+    height: 35vh;
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px 0px #131a2fa3;
+    border-radius: 5px;
+}
+
+.feature p {
+    color: #142D4C;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.feature a {
+    color: #142D4C;
+    text-decoration: none;
+}
+
+.feature a:hover {
+    color: #9FD3C7;
+}
+
+#feature_div::-webkit-scrollbar {
+    height: 10px;
+}
+
+#feature_div::-webkit-scrollbar-track {
+    background: #9FD3C7;
+}
+
+#feature_div::-webkit-scrollbar-thumb {
+    background: #385170;
+    border-radius: 5px;
+}
+
+#create_div {
+    /* border: 2px solid red; */
+    display: flex;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+#create_list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline-start: 0px;
+}
+
+#create_list li {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 20%;
+}
+
+#create_list li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#create_list li a:hover {
+    background: #142d4c21;
+}
+
+#create_list li a img {
+    width: 5%;
+}
+
+#create_list li a p {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #142D4C;
+    font-weight: bold;
+}
+
+#task_event {
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+#task_event div {
+    /* border: 2px solid red; */
+}
+
+.task_event_div {
+    width: 50%;
+    margin: 20px;
+    padding: 20px 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px #131a2fa3;
+}
+
+.task_event_head1 {
+    text-align: center;
+    color: #142D4C;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.task_event_head2 {
+    display: flex;
+    justify-content: space-between;
+    color: #142D4C;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
+.task_event_line1 {
+    width: 70%;
+    height: 2px;
+    background: #142D4C;
+    margin: auto;
+}
+
+.status {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.task_event_list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #142D4C;
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
+.task_text, .task_status, .event_text, .event_status {
+    display: flex;
+    align-items: center;
+}
+
+.task_status, .event_status {
+    width: 10%;
+    justify-content: center;
+}
