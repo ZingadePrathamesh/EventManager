@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="tasks-list">
                         <img src="./Images/task_icon.png" alt="task">
                         <span>Tasks</span>
                     </a>

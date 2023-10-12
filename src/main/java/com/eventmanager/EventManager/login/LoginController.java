@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 
 	
+	//landing page
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	private String eventManagerLandingPage() {
+		return "landing";
+	}
+	
 	//Get-Method
 	@RequestMapping(value = "eventmanager-loginpage", method = RequestMethod.GET)
 	private String eventManagerLoginPage() {
@@ -42,5 +48,12 @@ public class LoginController {
 		@RequestMapping(value = "event-list", method = RequestMethod.GET)
 		private String eventManagerEventListPage() {
 			return "event_list";
+		}
+		
+		
+		//Get-Method
+		@RequestMapping(value = "tasks-list", method = RequestMethod.GET)
+		private String eventManagerTaskListPage() {
+			return "tasks_list";
 		}
 }
