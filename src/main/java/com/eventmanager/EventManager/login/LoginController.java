@@ -19,6 +19,24 @@ public class LoginController {
 		private String eventManagerHomePage() {
 			return "homepage";
 		}
+		
+		//redirecting to homepage
+		@RequestMapping("homepage")
+		private String eventManagerRedirectHomePage() {
+			return "homepage";
+		}
+		
+		//profile page
+		@RequestMapping("profile-page")
+		private String eventManageProfilePage() {
+			return "profile";
+		}
+		
+		//team page
+		@RequestMapping("team-page")
+		private String eventManageTeamPage() {
+			return "team";
+		}
 	
 		//Get-Method
 		@RequestMapping(value = "event-list", method = RequestMethod.GET)

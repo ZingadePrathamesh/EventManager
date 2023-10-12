@@ -16,13 +16,13 @@
         <div id="nav_list" class="showMenu">
             <ul id="list_ul">
                 <li>
-                    <a href="">
+                    <a href="profile-page">
                         <img src="./Images/profile_icon.png" alt="profile">
                         <span>Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="team-page">
                         <img src="./Images/team_icon.png" alt="team">
                         <span>Team</span>
                     </a>
@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="homepage">
                         <img src="./Images/home_icon.png" alt="home">
                         <span>Home</span>
                     </a>
