@@ -20,5 +20,9 @@ public class LoginController {
 			return "homepage";
 		}
 	
-	
+		//Get-Method
+		@RequestMapping(value = "event-list", method = RequestMethod.GET)
+		private String eventManagerEventListPage() {
+			return "event_list";
+		}
 }

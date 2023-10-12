@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="event-list">
                         <img src="./Images/event_icon.png" alt="event">
                         <span>Event</span>
                     </a>
