@@ -8,52 +8,51 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 
 	
-	//landing page
+	// landing page
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	private String eventManagerLandingPage() {
 		return "landing";
 	}
-	
-	//Get-Method
+
+	// Get-Method
 	@RequestMapping(value = "eventmanager-loginpage", method = RequestMethod.GET)
 	private String eventManagerLoginPage() {
 		return "login";
 	}
-	
-	//Get-Method
-		@RequestMapping(value = "eventmanager-loginpage", method = RequestMethod.POST)
-		private String eventManagerHomePage() {
-			return "homepage";
-		}
-		
-		//redirecting to homepage
-		@RequestMapping("homepage")
-		private String eventManagerRedirectHomePage() {
-			return "homepage";
-		}
-		
-		//profile page
-		@RequestMapping("profile-page")
-		private String eventManageProfilePage() {
-			return "profile";
-		}
-		
-		//team page
-		@RequestMapping("team-page")
-		private String eventManageTeamPage() {
-			return "team";
-		}
-	
-		//Get-Method
-		@RequestMapping(value = "event-list", method = RequestMethod.GET)
-		private String eventManagerEventListPage() {
-			return "event_list";
-		}
-		
-		
-		//Get-Method
-		@RequestMapping(value = "tasks-list", method = RequestMethod.GET)
-		private String eventManagerTaskListPage() {
-			return "tasks_list";
-		}
+
+	// Get-Method
+	@RequestMapping(value = "eventmanager-loginpage", method = RequestMethod.POST)
+	private String eventManagerHomePage() {
+		return "homepage";
+	}
+
+	// redirecting to homepage
+	@RequestMapping("homepage")
+	private String eventManagerRedirectHomePage() {
+		return "homepage";
+	}
+
+	// profile page
+	@RequestMapping("profile-page")
+	private String eventManageProfilePage() {
+		return "profile";
+	}
+
+	// team page
+	@RequestMapping("team-page")
+	private String eventManageTeamPage() {
+		return "team";
+	}
+
+	// Get-Method
+	@RequestMapping(value = "event-list", method = RequestMethod.GET)
+	private String eventManagerEventListPage() {
+		return "event_list";
+	}
+
+	// Get-Method
+	@RequestMapping(value = "tasks-list", method = RequestMethod.GET)
+	private String eventManagerTaskListPage() {
+		return "tasks_list";
+	}
 }
