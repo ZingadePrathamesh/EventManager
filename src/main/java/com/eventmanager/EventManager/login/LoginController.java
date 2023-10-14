@@ -44,11 +44,6 @@ public class LoginController {
 		return "team";
 	}
 
-	// Get-Method
-	@RequestMapping(value = "event-list", method = RequestMethod.GET)
-	private String eventManagerEventListPage() {
-		return "event_list";
-	}
 
 	// Get-Method
 	@RequestMapping(value = "tasks-list", method = RequestMethod.GET)
