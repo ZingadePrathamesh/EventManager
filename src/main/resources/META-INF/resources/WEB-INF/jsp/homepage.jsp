@@ -187,6 +187,8 @@
 
         </div>
     </div>
+    
+    <div>${username}</div>
 
     <script src="homepage_js.js"></script>
 </body>
