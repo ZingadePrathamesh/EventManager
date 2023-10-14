@@ -72,7 +72,7 @@
     <div id="create_div">
         <ul id="create_list">
             <li>
-                <a href="">
+                <a href="create-event">
                 <img src="./Images/create.png" alt="create">
                 <p>Create Event</p>
                 </a>
