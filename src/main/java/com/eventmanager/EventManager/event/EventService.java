@@ -24,4 +24,8 @@ public class EventService {
 	public List<Event> getByUsername(String username){
 		return events;
 	}
+	
+	public void addNewEvent(Event event){
+		events.add(new Event(++eventCount, event.getName(), event.getStartDate(), event.getEndDate(), event.getStatus()));
+	}
 }
