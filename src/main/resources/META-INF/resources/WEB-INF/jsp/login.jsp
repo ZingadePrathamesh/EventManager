@@ -17,11 +17,11 @@
 	            </div>
 	            <label for="u_name">username</label>
 	            
-	            <input type="text" placeholder="Username" required>
+	            <input type="text" placeholder="Username" name = "username" required>
 	            
 	            <label for="password">Password</label>
 	            
-	            <input type="password" placeholder="Password" required>
+	            <input type="password" placeholder="Password" name = "password" required>
 	            
 	            <div id="forget_p">
 	                <a href="#">Forget Password?</a>

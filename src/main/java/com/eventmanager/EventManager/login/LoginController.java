@@ -1,8 +1,10 @@
 package com.eventmanager.EventManager.login;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -17,14 +19,15 @@ public class LoginController {
 	}
 
 	// Get-Method
-	@RequestMapping(value = "eventmanager-loginpage", method = RequestMethod.GET)
+	@RequestMapping(value = "loginpage", method = RequestMethod.GET)
 	private String eventManagerLoginPage() {
 		return "login";
 	}
 
-	// Get-Method
-	@RequestMapping(value = "eventmanager-loginpage", method = RequestMethod.POST)
-	private String eventManagerHomePage() {
+	// Post-Method
+	@RequestMapping(value = "loginpage", method = RequestMethod.POST)
+	private String eventManagerHomePage(@RequestParam String username, ModelMap model) {
+		model.put("username", username);
 		return "homepage";
 	}
 

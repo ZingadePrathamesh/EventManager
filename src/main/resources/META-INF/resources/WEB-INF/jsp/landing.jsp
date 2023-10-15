@@ -15,7 +15,7 @@
                 <img id="logo" class="nav" src="./Images/event-manager-logo.png" alt="logo">
 
                 <ul id="nav_list" class="nav">
-                    <li><a href="homepage.html"> Home </a></li>
+                    <li><a href="homepage"> Home </a></li>
                     <li><a href="#"> Event </a></li>
                     <li><a href="#"> Calender </a></li>
                     <li><a href="#"> About Us </a></li>
@@ -36,7 +36,7 @@
                 <br>
                 And make easy to handle the event schedules.
             </p>
-            <a href="eventmanager-loginpage">
+            <a href="loginpage">
   				<button id="login_btn2">Login</button>
 			</a>
         </div>
