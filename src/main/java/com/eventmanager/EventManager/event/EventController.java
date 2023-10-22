@@ -65,7 +65,7 @@ public class EventController {
 
 	@RequestMapping(value = "update-event", method = RequestMethod.GET)
 	private String getUpdateEventForm(ModelMap model , @RequestParam int id) {
-		Event tempEvent = eventService.getById(id);
+		Event tempEvent = eventService.findById(id);
 		model.put("event",tempEvent);
 		return "event_form";
 	}
@@ -75,9 +75,10 @@ public class EventController {
 	
 	@RequestMapping(value = "update-event", method = RequestMethod.POST)
 	private String postUpdateEventForm(ModelMap model, @Valid Event event) {
-		Event tempEvent = new Event(0, event.getName(), LocalDate.now().plusMonths(2), LocalDate.now().plusYears(1), "Upcoming");
+		Event tempEvent = new Event(0, event.getName(), LocalDate.now().plusMonths(2), 
+				LocalDate.now().plusYears(1), "Upcoming");
 		
-		eventService.addNewEvent(tempEvent);
+		eventService.updateEvent(tempEvent);
 		return "redirect:event-list";
 	}
 

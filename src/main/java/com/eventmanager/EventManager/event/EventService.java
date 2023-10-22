@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import jakarta.persistence.criteria.Predicate;
-
 @Service
 public class EventService {
 	
@@ -27,13 +25,22 @@ public class EventService {
 		return events;
 	}
 	
-	public Event getById(int id){
-//		Predicate<? super Event> predicate = event-> event.getId() == id;
-//		Event event = events.stream().filter(predicate).findFirst().get()	
-		return events.get(1);
+	public Event findById(int id) {
+		Event event = events.stream().filter(event2 -> event2.getId() == id).findFirst().get();
+		return event;
 	}
 	
 	public void addNewEvent(Event event){
 		events.add(new Event(++eventCount, event.getName(), event.getStartDate(), event.getEndDate(), event.getStatus()));
+	}
+	public void deleteById(long id){
+		events.removeIf(event2 -> event2.getId() == id);
+	}
+	public void updateEvent(Event event){
+		long id = event.getId();
+		
+		deleteById(id);
+		
+		events.add(new Event(id, event.getName(), event.getStartDate(), event.getEndDate(), event.getStatus()));
 	}
 }
