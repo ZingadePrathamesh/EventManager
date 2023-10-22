@@ -75,10 +75,7 @@ public class EventController {
 	
 	@RequestMapping(value = "update-event", method = RequestMethod.POST)
 	private String postUpdateEventForm(ModelMap model, @Valid Event event) {
-		Event tempEvent = new Event(0, event.getName(), LocalDate.now().plusMonths(2), 
-				LocalDate.now().plusYears(1), "Upcoming");
-		
-		eventService.updateEvent(tempEvent);
+		eventService.updateEvent(event);
 		return "redirect:event-list";
 	}
 

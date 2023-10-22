@@ -15,7 +15,7 @@ public class Event {
 	
 	
 	
-	public Event(long id, String name, LocalDate startDate, LocalDate endDate, String status) {
+	public Event(int id, String name, LocalDate startDate, LocalDate endDate, String status) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -27,7 +27,7 @@ public class Event {
 
 
 	@Id
-	private long id;
+	private int id;
 	
 	@Size(min = 5, message = "Enter atleast 5 character!")
 	private String name;
@@ -37,10 +37,10 @@ public class Event {
 	
 	
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {

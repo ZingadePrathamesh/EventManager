@@ -3,13 +3,14 @@ package com.eventmanager.EventManager.event;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class EventService {
 	
-	private static int eventCount = 0;
+	private static int eventCount = -1;
 	 
 	private static List<Event> events = new ArrayList<Event>();
 	
@@ -26,18 +27,22 @@ public class EventService {
 	}
 	
 	public Event findById(int id) {
-		Event event = events.stream().filter(event2 -> event2.getId() == id).findFirst().get();
+		Predicate<? super Event> predicate = event -> event.getId() == id;
+		Event event = events.stream().filter(predicate).findFirst().get();
 		return event;
 	}
 	
 	public void addNewEvent(Event event){
 		events.add(new Event(++eventCount, event.getName(), event.getStartDate(), event.getEndDate(), event.getStatus()));
 	}
-	public void deleteById(long id){
-		events.removeIf(event2 -> event2.getId() == id);
+	
+	public void deleteById(int id){
+		Predicate<? super Event> predicate = event -> event.getId() == id;
+		events.removeIf(predicate);
 	}
+	
 	public void updateEvent(Event event){
-		long id = event.getId();
+		int id = event.getId();
 		
 		deleteById(id);
 		
