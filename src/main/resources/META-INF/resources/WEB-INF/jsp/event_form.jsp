@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html lang="en">
 
@@ -15,10 +15,14 @@
 	    <hr>
 	    
 	    <div>
-	    	<form method = POST>
-	    		Name: <input type = "text" name = "name">
-	    		<input type = "submit" class = "btn btn-primary">
-	    	</form> 
+	    	<form:form method = "POST" modelAttribute="event">
+	    		Name: <form:input type = "text" path = "name"/>
+	    		Id: <form:input type = "text" path = "id"/>
+	    		Start Date: <form:input type = "text" path = "startDate"/>
+	    		End Date: <form:input type = "text" path = "endDate"/>
+	    		Status: <form:input type = "text" path = "status"/>
+	    		<input type = "submit" class = "btn btn-primary"/>
+	    	</form:form> 
 	    
 	    </div>
 	    
