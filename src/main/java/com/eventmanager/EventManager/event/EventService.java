@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import jakarta.persistence.criteria.Predicate;
+
 @Service
 public class EventService {
 	
@@ -23,6 +25,12 @@ public class EventService {
 	
 	public List<Event> getByUsername(String username){
 		return events;
+	}
+	
+	public Event getById(int id){
+//		Predicate<? super Event> predicate = event-> event.getId() == id;
+//		Event event = events.stream().filter(predicate).findFirst().get()	
+		return events.get(1);
 	}
 	
 	public void addNewEvent(Event event){

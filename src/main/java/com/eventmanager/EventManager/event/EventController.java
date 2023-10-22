@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
@@ -49,13 +50,33 @@ public class EventController {
 
 	@RequestMapping(value = "create-event", method = RequestMethod.POST)
 	private String postCreateEventForm(ModelMap model, @Valid Event event, BindingResult result) {
-		
 		if(result.hasErrors()) {
 			return "event_form";
 		}
+		Event tempEvent = new Event(0, event.getName(), LocalDate.now().plusMonths(2), 
+				LocalDate.now().plusYears(1), "Upcoming");
+		eventService.addNewEvent(tempEvent);
+		return "redirect:event-list";
+	}
+	
+	
+	// Get-Method for updating Event
+	// it shows the event form page
 
+	@RequestMapping(value = "update-event", method = RequestMethod.GET)
+	private String getUpdateEventForm(ModelMap model , @RequestParam int id) {
+		Event tempEvent = eventService.getById(id);
+		model.put("event",tempEvent);
+		return "event_form";
+	}
+	
+	// Post-Method for Updating the  Event
+	// use to update the existing event in the list
+	
+	@RequestMapping(value = "update-event", method = RequestMethod.POST)
+	private String postUpdateEventForm(ModelMap model, @Valid Event event) {
 		Event tempEvent = new Event(0, event.getName(), LocalDate.now().plusMonths(2), LocalDate.now().plusYears(1), "Upcoming");
-
+		
 		eventService.addNewEvent(tempEvent);
 		return "redirect:event-list";
 	}
