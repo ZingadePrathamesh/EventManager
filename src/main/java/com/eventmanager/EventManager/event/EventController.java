@@ -4,9 +4,12 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import jakarta.validation.Valid;
 
 @Controller
 @SessionAttributes("username")
@@ -36,7 +39,7 @@ public class EventController {
 
 	@RequestMapping(value = "create-event", method = RequestMethod.GET)
 	private String getCreateEventForm(ModelMap model) {
-		Event tempEvent = new Event(0, "event name", LocalDate.now().plusMonths(2), LocalDate.now().plusYears(1), "Upcoming");
+		Event tempEvent = new Event(0, "", LocalDate.now().plusMonths(2), LocalDate.now().plusYears(1), "Upcoming");
 		model.put("event",tempEvent);
 		return "event_form";
 	}
@@ -45,7 +48,11 @@ public class EventController {
 	// use to add a new event in the list
 
 	@RequestMapping(value = "create-event", method = RequestMethod.POST)
-	private String postCreateEventForm(ModelMap model, Event event) {
+	private String postCreateEventForm(ModelMap model, @Valid Event event, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return "event_form";
+		}
 
 		Event tempEvent = new Event(0, event.getName(), LocalDate.now().plusMonths(2), LocalDate.now().plusYears(1), "Upcoming");
 

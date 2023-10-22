@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Event {
@@ -27,6 +28,8 @@ public class Event {
 
 	@Id
 	private long id;
+	
+	@Size(min = 5, message = "Enter atleast 5 character!")
 	private String name;
 	private LocalDate startDate;
 	private LocalDate endDate;
