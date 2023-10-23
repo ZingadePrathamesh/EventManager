@@ -50,9 +50,6 @@ public class LoginController {
 	}
 
 
-	// Get-Method
-	@RequestMapping(value = "tasks-list", method = RequestMethod.GET)
-	private String eventManagerTaskListPage() {
-		return "tasks_list";
-	}
+
+	
 }
