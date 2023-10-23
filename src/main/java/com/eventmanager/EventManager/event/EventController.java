@@ -40,7 +40,7 @@ public class EventController {
 
 	@RequestMapping(value = "create-event", method = RequestMethod.GET)
 	private String getCreateEventForm(ModelMap model) {
-		Event tempEvent = new Event(0, "", LocalDate.now().plusMonths(2), LocalDate.now().plusYears(1), "Upcoming");
+		Event tempEvent = new Event(0, "", "" , LocalDate.now().plusMonths(2), LocalDate.now().plusYears(1), "Upcoming");
 		model.put("event",tempEvent);
 		return "event_form";
 	}
@@ -53,7 +53,7 @@ public class EventController {
 		if(result.hasErrors()) {
 			return "event_form";
 		}
-		Event tempEvent = new Event(0, event.getName(), LocalDate.now().plusMonths(2), 
+		Event tempEvent = new Event(0, event.getName(), event.getDescription(), LocalDate.now().plusMonths(2), 
 				LocalDate.now().plusYears(1), "Upcoming");
 		eventService.addNewEvent(tempEvent);
 		return "redirect:event-list";

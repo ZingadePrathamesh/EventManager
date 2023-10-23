@@ -11,7 +11,8 @@
 	</head>
 
 	<body>
-	    <h1>Event List</h1>
+		<%@include file = "common/navbar.jspf" %>
+	    <h3>Event List</h3>
 	    <hr>
 	    <table class = "table">
 			<thead>

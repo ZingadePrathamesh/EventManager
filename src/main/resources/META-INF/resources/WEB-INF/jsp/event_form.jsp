@@ -11,22 +11,30 @@
 	</head>
 
 	<body>
-	    <h1>Add Event</h1>
+		<%@ include file = "common/navbar.jspf" %>
+		
+		
 	    <hr>
 	    
-	    <div>
+	    <div class = "container">
 	    	<form:form method = "POST" modelAttribute="event" class ="form-group">
 	    		<fieldset class = "mb-3">
 					<form:label path="name">Name</form:label>
-					<form:input type = "text" path = "name" required="required"/>
+					<form:input class= "form-control" type = "text" path = "name" required="required"/>
 					<form:errors class = "text-warning" path = "name"/>
 				</fieldset>
 				
 	    		<fieldset class = "mb-3">
-					<form:label path="id">Id</form:label>
-					<form:input type = "text" path = "id" required="required"/>
-					<form:errors class = "text-warning" path = "id"/>
+					<form:label path="description">Description</form:label>
+					<form:input class= "form-control" type = "text" path = "description" required="required"/>
+					<form:errors class = "text-warning" path = "description"/>
 				</fieldset>
+				
+	    		<!-- <fieldset class = "mb-3">
+					<form:label path="id">Id</form:label>
+					<form:input class = "input-box" type = "hidden" path = "id" required="required"/>
+					<form:errors class = "text-warning" path = "id"/>
+				</fieldset> -->
 				
 	    		<fieldset class = "mb-3">
 					<form:label path="startDate">Start Date</form:label>
@@ -42,7 +50,11 @@
 				
 	    		<fieldset class = "mb-3">
 					<form:label path="status">Status</form:label>
-					<form:input type = "text" path = "status" required="required"/>
+					<form:select path = "status" class= "form-select">
+						<option value = "Upcoming">Upcoming</option>
+						<option value = "Ongoing">Ongoing</option>
+						<option value = "Completed">Completed</option>
+					</form:select>
 					<form:errors class = "text-warning" path = "status"/>
 				</fieldset>
 				

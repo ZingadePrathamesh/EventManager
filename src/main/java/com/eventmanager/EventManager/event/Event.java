@@ -15,10 +15,11 @@ public class Event {
 	
 	
 	
-	public Event(int id, String name, LocalDate startDate, LocalDate endDate, String status) {
+	public Event(int id, String name, String description, LocalDate startDate, LocalDate endDate, String status) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.description = description;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.status = status;
@@ -31,12 +32,20 @@ public class Event {
 	
 	@Size(min = 5, message = "Enter atleast 5 character!")
 	private String name;
+	private String description;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private String status;
 	
 	
 	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public int getId() {
 		return id;
 	}
