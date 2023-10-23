@@ -31,6 +31,12 @@ public class EventService {
 		Event event = events.stream().filter(predicate).findFirst().get();
 		return event;
 	}
+	public Event findByName(String name) {
+		Predicate<? super Event> predicate = event -> event.getName().equalsIgnoreCase(name);
+		Event event = events.stream().filter(predicate).findFirst().get();
+		
+		return event;
+	}
 	
 	public void addNewEvent(Event event){
 		events.add(new Event(++eventCount, event.getName(), event.getDescription(), event.getStartDate(), event.getEndDate(), event.getStatus()));

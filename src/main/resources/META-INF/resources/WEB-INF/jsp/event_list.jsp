@@ -37,7 +37,7 @@
 						<td>${event.endDate}</td>
 						<td>${event.status}</td>
 						<td><a class ="btn btn-primary" href = "update-event?id=${event.id}">Update</a></td>
-						<td><a href ="tasks-list?name=${event.name}" class ="btn btn-secondary" >View</a></td>
+						<td><a href ="event-view?name=${event.name}" class ="btn btn-secondary" >View</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

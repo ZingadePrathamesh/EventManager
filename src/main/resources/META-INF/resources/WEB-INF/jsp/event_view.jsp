@@ -12,7 +12,17 @@
 
 	<body>
 		<%@ include file = "common/navbar.jspf" %>
+		<h3>Event name: ${event.name} </h3>
+		<hr>
+		<h3>Event description: ${event.description} </h3>
+		<hr>
+		<h3>status: ${event.status} </h3>
+		<hr>
+		<h3>start date: ${event.startDate} </h3>
+		<hr>
+		<h3>end date: ${event.endDate} </h3>
 		
+		<%@ include file = "common/tasklist.jspf" %>
 		
 		
 		

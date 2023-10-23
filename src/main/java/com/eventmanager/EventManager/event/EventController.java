@@ -1,6 +1,7 @@
 package com.eventmanager.EventManager.event;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.eventmanager.EventManager.TaskManager.Task;
+import com.eventmanager.EventManager.TaskManager.TaskRepository;
+
 import jakarta.validation.Valid;
 
 @Controller
@@ -17,10 +21,12 @@ import jakarta.validation.Valid;
 public class EventController {
 
 	private EventService eventService;
+	private TaskRepository taskRepository;
 
-	public EventController(EventService eventService) {
+	public EventController(EventService eventService, TaskRepository taskRepository) {
 		super();
 		this.eventService = eventService;
+		this.taskRepository = taskRepository;
 	}
 
 	// Get, Post - Method for Listing all the events
@@ -84,8 +90,12 @@ public class EventController {
 	// Get-Method for viewing Event
 	// it shows the event page
 	@RequestMapping(value = "event-view", method = RequestMethod.GET)
-	private String getEventView(ModelMap model , @RequestParam int id) {
+	private String getEventView(ModelMap model , @RequestParam String name) {
+		Event event = eventService.findByName(name);
+		List<Task> tasks = taskRepository.findByName(name);
 		
+		model.put("event", event);
+		model.put("tasks", tasks);
 		return "event_view";
 	}
 	
