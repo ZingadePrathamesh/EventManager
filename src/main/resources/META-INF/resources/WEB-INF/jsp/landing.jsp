@@ -16,7 +16,7 @@
 
                 <ul id="nav_list" class="nav">
                     <li><a href="homepage"> Home </a></li>
-                    <li><a href="tasks-list"> Event </a></li>
+                    <li><a href="event-list"> Event </a></li>
                     <li><a href="#"> Calender </a></li>
                     <li><a href="#"> About Us </a></li>
                 </ul>

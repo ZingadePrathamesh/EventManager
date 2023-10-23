@@ -21,6 +21,7 @@
 			<thead>
 				<tr>
 					<th>ID</th>
+				<!-- <th>Event Name</th> -->	
 					<th>Name</th>
 					<th>Description</th>
 					<th>Deadline</th>
@@ -32,6 +33,7 @@
 				<c:forEach items = "${tasks}" var = "task">
 					<tr>
 						<td>${task.id}</td>
+					<!--  <td>${task.name}</td> -->	
 						<td>${task.taskName}</td>
 						<td>${task.description}</td>
 						<td>${task.deadline}</td>
@@ -42,7 +44,7 @@
 			</tbody>
 		</table>
 		
-		<div><a href="task-form" class=" btn btn-success">Add Task</a></div>
+		<div><a href="task-form?name=${task.name}" class=" btn btn-success">Add Task</a></div>
 		
 		</div>
 		

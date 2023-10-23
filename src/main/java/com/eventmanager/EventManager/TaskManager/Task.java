@@ -18,7 +18,7 @@ public class Task {
 	private int id;
 	
 	private int eventId;
-	private String eventName;
+	private String name;
 	private String username;
 	private String taskName;
 	private String description;
@@ -27,12 +27,12 @@ public class Task {
 	private boolean isDone;
 	
 	
-	public Task(int id, int eventId, String eventName, String username, String taskName, String description,
+	public Task(int id, int eventId, String name, String username, String taskName, String description,
 			LocalDate deadline, String domain, boolean isDone) {
 		super();
 		this.id = id;
 		this.eventId = eventId;
-		this.eventName = eventName;
+		this.name = name;
 		this.username = username;
 		this.taskName = taskName;
 		this.description = description;
@@ -53,11 +53,11 @@ public class Task {
 	public void setEventId(int eventId) {
 		this.eventId = eventId;
 	}
-	public String getEventName() {
-		return eventName;
+	public String getName() {
+		return name;
 	}
-	public void setEventName(String eventName) {
-		this.eventName = eventName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getUsername() {
 		return username;
@@ -100,7 +100,7 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return "Task [id=" + id + ", eventId=" + eventId + ", eventName=" + eventName + ", username=" + username
+		return "Task [id=" + id + ", eventId=" + eventId + ", name=" + name + ", username=" + username
 				+ ", taskName=" + taskName + ", description=" + description + ", deadline=" + deadline + ", domain="
 				+ domain + ", isDone=" + isDone + "]";
 	}
