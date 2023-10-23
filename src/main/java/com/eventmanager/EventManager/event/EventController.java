@@ -78,5 +78,24 @@ public class EventController {
 		eventService.updateEvent(event);
 		return "redirect:event-list";
 	}
+	
+	
+	
+	// Get-Method for viewing Event
+	// it shows the event page
+	@RequestMapping(value = "event-view", method = RequestMethod.GET)
+	private String getEventView(ModelMap model , @RequestParam int id) {
+		
+		return "event_view";
+	}
+	
+	// Post-Method for viewing the  Event
+	// use to view the existing event in the list
+	
+	@RequestMapping(value = "event-view", method = RequestMethod.POST)
+	private String postEventView(ModelMap model, @Valid Event event) {
+		eventService.updateEvent(event);
+		return "redirect:event-list";
+	}
 
 }

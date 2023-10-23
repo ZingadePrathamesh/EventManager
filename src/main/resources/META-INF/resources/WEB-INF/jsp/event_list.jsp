@@ -11,7 +11,9 @@
 	</head>
 
 	<body>
+	<!-- navigation bar shortcut -->
 		<%@include file = "common/navbar.jspf" %>
+		
 	    <h3>Event List</h3>
 	    <hr>
 	    <table class = "table">
@@ -35,7 +37,7 @@
 						<td>${event.endDate}</td>
 						<td>${event.status}</td>
 						<td><a class ="btn btn-primary" href = "update-event?id=${event.id}">Update</a></td>
-						<td><a class ="btn btn-secondary" href = "">View</a></td>
+						<td><a class ="btn btn-secondary" href = "event-view?id=${event.id}">View</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
