@@ -18,7 +18,7 @@ import com.eventmanager.EventManager.TaskManager.TaskRepository;
 import jakarta.validation.Valid;
 
 @Controller
-@SessionAttributes("username")
+@SessionAttributes("firstname")
 public class EventController {
 
 	private EventService eventService;

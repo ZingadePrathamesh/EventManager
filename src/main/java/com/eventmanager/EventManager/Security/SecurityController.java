@@ -29,7 +29,7 @@ public class SecurityController {
 	@RequestMapping(value="login-page",method = RequestMethod.POST)
 	public String gotoLandingPage (@RequestParam String username,@RequestParam String password,ModelMap model) {
 		
-		if(authentication.authenticate(username, password)) {
+		if(authentication.authenticateAdmin(username, password)) {
 			model.put("username",username);
 			model.put("password",password);
 			return "homepage";

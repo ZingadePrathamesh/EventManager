@@ -1,38 +1,58 @@
 package com.eventmanager.EventManager.user;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Member {
 	
-	public Member(int id, String firstname, String lastname, String skill, int age, String password) {
-		super();
-		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.skill = skill;
-		this.age = age;
-		this.password = password;
-	}
+    public Member(int id, String firstname, String lastname, String skill, int age, String password) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.skill = skill;
+        this.age = age;
+        this.password = password;
+    }
 
+    public Member() {
 
-	public Member() {
-		
-	}
-	
+    }
 
-	private int id;
-	
-	@Id
-	@GeneratedValue
-	private String firstname;
-	private String lastname;
-	private String skill;
-	private int age;
-	private String password;
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @NotBlank(message = "Firstname is required.")
+    @Size(min = 2, message = "Firstname must be at least 2 characters.")
+    @Column(unique = true) // Unique constraint at the database level
+    private String firstname;
+
+    @NotBlank(message = "Lastname is required.")
+    @Size(min = 2, message = "Lastname must be at least 2 characters.")
+    private String lastname;
+
+    private String skill;
+
+    @Min(value = 14, message = "Age must be 14 or older.")
+    private int age;
+
+    @NotBlank(message = "Password is required.")
+    @Size(min = 2, message = "Password must be at least 2 characters.")
+    private String password;
+
+    // Getters and setters
+
+    @Override
+    public String toString() {
+        return "Member [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", skill=" + skill + ", age="
+                + age + ", password=" + password + "]";
+    }
 	
 
 
@@ -96,10 +116,5 @@ public class Member {
 	}
 
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", skill=" + skill + ", age="
-				+ age + ", password=" + password + "]";
-	}
 	
 }

@@ -7,11 +7,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.eventmanager.EventManager.Security.AuthentificationService;
+
 @Controller
-@SessionAttributes("username")
+@SessionAttributes("firstname")
 public class LoginController {
+	
+	private AuthentificationService authentificationService;
+	
 
 	
+	public LoginController(AuthentificationService authentificationService) {
+		super();
+		this.authentificationService = authentificationService;
+	}
+
 	// landing page
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	private String eventManagerLandingPage() {
@@ -26,22 +36,17 @@ public class LoginController {
 
 	// Post-Method
 	@RequestMapping(value = "loginpage", method = RequestMethod.POST)
-	private String eventManagerHomePage(@RequestParam String username, ModelMap model) {
-		model.put("username", username);
-		return "homepage";
-	}
-	
-	// Get-Method
-	@RequestMapping(value = "signup-form", method = RequestMethod.GET)
-	private String signUpPage() {
-		return "signup_form";
-	}
-	
-	// Post-Method
-	@RequestMapping(value = "signup-form", method = RequestMethod.POST)
-	private String signUpPostPage(ModelMap model) {
+	private String eventManagerHomePage(@RequestParam String firstname,@RequestParam String password, ModelMap model) {
+		if(authentificationService.authenticateAdmin(firstname, password)) {
+			return "homepage";
+		}
+		else if(authentificationService.authenticateUser(firstname, password)) {
+			return "user_homepage";
+		}
+		else
 		return "redirect:loginpage";
 	}
+	
 
 	// redirecting to homepage
 	@RequestMapping("homepage")

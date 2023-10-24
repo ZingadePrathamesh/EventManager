@@ -8,12 +8,24 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>Event Manager</title>
 	    <link rel="stylesheet" href="webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+	    
+	    <style>
+	    	.signupform {
+			  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			  padding:32px;
+			  margin: 32px;
+			  justify-content: center; /* Horizontally center content */
+			}
+	    </style>
 	</head>
 
-	<body>
+	<body class = "container">
 	    
-	    <div class = "container">
+	    <div class = "container signupform">
 	    	<form:form method = "POST" modelAttribute="member" class ="form-group">
+	    		<h5><strong>Registration Form</strong></h5>
+	    		<hr>
+	    	
 	    		<fieldset class = "mb-3">
 					<form:label path="firstname">First Name</form:label>
 					<form:input class= "form-control" type = "text" path = "firstname" required="required"/>
@@ -40,7 +52,7 @@
 				
 				
 	    		<fieldset class = "mb-3">
-					<form:label path="skill">Status</form:label>
+					<form:label path="skill">Skills</form:label>
 					<form:select path = "skill" class= "form-select">
 						<option value = "Management">Management</option>
 						<option value = "Catering">Catering</option>

@@ -17,7 +17,7 @@
 	            </div>
 	            <label for="u_name">username</label>
 	            
-	            <input type="text" placeholder="Username" name = "username" required>
+	            <input type="text" placeholder="Username" name = "firstname" required>
 	            
 	            <label for="password">Password</label>
 	            
