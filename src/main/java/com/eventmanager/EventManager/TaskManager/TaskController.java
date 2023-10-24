@@ -58,7 +58,7 @@ public class TaskController {
 		@RequestMapping(value="task-form-from-event",method=RequestMethod.GET)
 		public String eventViewTaskForm(ModelMap model, @RequestParam String name) {
 			Task task = new Task(0,0,name,"admin","","",LocalDate.now(),"",false);
-			
+			System.out.println("get:" + task.getName());
 			model.put("task", task);
 			return "task_form";
 		}
@@ -69,8 +69,8 @@ public class TaskController {
 		public String eventViewTaskSubmitPage(ModelMap model, Task task) {
 			
 			List<Task> tasks = taskRepository.findByUsername("admin");
-			System.out.println(task.getName());
-		
+			System.out.println("post:" + task.getName());
+			
 			task.setUsername("admin");
 			taskRepository.save(task);
 			model.addAttribute("tasks",tasks );
