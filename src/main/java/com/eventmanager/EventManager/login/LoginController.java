@@ -30,6 +30,18 @@ public class LoginController {
 		model.put("username", username);
 		return "homepage";
 	}
+	
+	// Get-Method
+	@RequestMapping(value = "signup-form", method = RequestMethod.GET)
+	private String signUpPage() {
+		return "signup_form";
+	}
+	
+	// Post-Method
+	@RequestMapping(value = "signup-form", method = RequestMethod.POST)
+	private String signUpPostPage(ModelMap model) {
+		return "redirect:loginpage";
+	}
 
 	// redirecting to homepage
 	@RequestMapping("homepage")
