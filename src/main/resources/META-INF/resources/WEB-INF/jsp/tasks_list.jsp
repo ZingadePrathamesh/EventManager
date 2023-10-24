@@ -21,10 +21,12 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-				<!-- <th>Event Name</th> -->	
-					<th>Name</th>
+					<th>Event Name</th>
+					<th>Task Name</th>
 					<th>Description</th>
 					<th>Deadline</th>
+					<th>isDone</th>
+					<th>Domain</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -33,18 +35,20 @@
 				<c:forEach items = "${tasks}" var = "task">
 					<tr>
 						<td>${task.id}</td>
-					<!--  <td>${task.name}</td> -->	
+						<td>${task.eventname}</td> 
 						<td>${task.taskName}</td>
 						<td>${task.description}</td>
 						<td>${task.deadline}</td>
+						<td>${task.isDone}</td>
+						<td>${task.domain}</td>
 						<td><a class ="btn btn-primary" href = "update-event?id=${task.id}">Update</a></td>
-						<td><a class ="btn btn-secondary" href = "event-view?id=${task.id}">View</a></td>
+					<%-- 	<td><a class ="btn btn-secondary" href = "event-view?id=${task.id}">View</a></td> --%>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		
-		<div><a href="task-form?name=${task.name}" class=" btn btn-success">Add Task</a></div>
+		<div><a href="task-form?name=${task.eventname}" class=" btn btn-success">Add Task</a></div>
 		
 		</div>
 		

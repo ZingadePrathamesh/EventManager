@@ -22,7 +22,7 @@
 			<h5><strong>end date:</strong> ${event.endDate} </h5> <hr>
 		</div>
 
-		<div class =  "container">
+ 		<div class =  "container">
 			<%@ include file = "common/tasklist.jspf" %>
 		</div>
 		

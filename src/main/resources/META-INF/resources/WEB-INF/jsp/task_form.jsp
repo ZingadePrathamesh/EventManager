@@ -68,9 +68,9 @@
 				
 				
 				<fieldset class = "mb-3">
-					<form:label path="name">Event Name</form:label>
-					<form:input type = "text" path = "name" required="required"/>
-					<form:errors class = "text-warning" path = "name"/>
+					<form:label path="eventname">Event Name</form:label>
+					<form:input type = "text" path = "eventname" required="required"/>
+					<form:errors class = "text-warning" path = "eventname"/>
 				</fieldset>
 				
 	    		<fieldset class = "mb-3">

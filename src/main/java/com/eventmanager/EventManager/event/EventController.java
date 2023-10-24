@@ -63,7 +63,7 @@ public class EventController {
 			return "event_form";
 		}
 		Event tempEvent = new Event(0, event.getName(), event.getDescription(), LocalDate.now().plusMonths(2), 
-				LocalDate.now().plusYears(1), "Upcoming");
+				LocalDate.now().plusYears(1), event.getStatus());
 		eventRepository.save(tempEvent);
 //		eventService.addNewEvent(tempEvent);
 		return "redirect:event-list";
@@ -106,7 +106,7 @@ public class EventController {
 		
 //		Event event = eventService.findByName(name);
 		Event event = eventRepository.findByName(name);
-		List<Task> tasks = taskRepository.findByName(name);
+		List<Task> tasks = taskRepository.findByEventname(name);
 		
 //		tasks.add(new Task(9, 9, "Party", "user", "games", "gkabf", LocalDate.now().plusYears(2), "Management", true));
 		model.put("event", event);
