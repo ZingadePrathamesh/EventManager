@@ -3,6 +3,7 @@ package com.eventmanager.EventManager.event;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
@@ -28,6 +29,7 @@ public class Event {
 
 
 	@Id
+	@GeneratedValue
 	private int id;
 	
 	@Size(min = 5, message = "Enter atleast 5 character!")

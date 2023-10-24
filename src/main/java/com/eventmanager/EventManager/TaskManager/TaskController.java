@@ -68,6 +68,7 @@ public class TaskController {
 		@RequestMapping(value="task-form-from-event",method=RequestMethod.POST)
 		public String eventViewTaskSubmitPage(ModelMap model, Task task) {
 			
+			System.out.println("post:" + task.getName());
 			List<Task> tasks = taskRepository.findByUsername("admin");
 			System.out.println("post:" + task.getName());
 			

@@ -2,6 +2,7 @@ package com.eventmanager.EventManager.event;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,11 +23,13 @@ public class EventController {
 
 	private EventService eventService;
 	private TaskRepository taskRepository;
+	private EventRepository eventRepository;
 
-	public EventController(EventService eventService, TaskRepository taskRepository) {
+	public EventController(EventService eventService, TaskRepository taskRepository, EventRepository eventRepository) {
 		super();
 		this.eventService = eventService;
 		this.taskRepository = taskRepository;
+		this.eventRepository =eventRepository;
 	}
 
 	// Get, Post - Method for Listing all the events
@@ -37,7 +40,7 @@ public class EventController {
 	@RequestMapping("event-list")
 	private String eventManagerEventListPage(ModelMap model) {
 
-		model.addAttribute("events", eventService.getByUsername("prathamesh"));
+		model.addAttribute("events", eventRepository.findAll());
 		return "event_list";
 	}
 
@@ -61,7 +64,8 @@ public class EventController {
 		}
 		Event tempEvent = new Event(0, event.getName(), event.getDescription(), LocalDate.now().plusMonths(2), 
 				LocalDate.now().plusYears(1), "Upcoming");
-		eventService.addNewEvent(tempEvent);
+		eventRepository.save(tempEvent);
+//		eventService.addNewEvent(tempEvent);
 		return "redirect:event-list";
 	}
 	
@@ -71,7 +75,8 @@ public class EventController {
 
 	@RequestMapping(value = "update-event", method = RequestMethod.GET)
 	private String getUpdateEventForm(ModelMap model , @RequestParam int id) {
-		Event tempEvent = eventService.findById(id);
+//		Event tempEvent = eventService.findById(id);
+		Optional<Event> tempEvent = eventRepository.findById(id);
 		model.put("event",tempEvent);
 		return "event_form";
 	}
@@ -81,7 +86,14 @@ public class EventController {
 	
 	@RequestMapping(value = "update-event", method = RequestMethod.POST)
 	private String postUpdateEventForm(ModelMap model, @Valid Event event) {
-		eventService.updateEvent(event);
+		int id = event.getId();
+		
+		eventRepository.deleteById(id);
+		
+		eventRepository.save(new Event(id, event.getName(), event.getDescription(), 
+				event.getStartDate(), event.getEndDate(), event.getStatus()));
+		
+//		eventService.updateEvent(event);
 		return "redirect:event-list";
 	}
 	
@@ -91,7 +103,9 @@ public class EventController {
 	// it shows the event page
 	@RequestMapping(value = "event-view", method = RequestMethod.GET)
 	private String getEventView(ModelMap model , @RequestParam String name) {
-		Event event = eventService.findByName(name);
+		
+//		Event event = eventService.findByName(name);
+		Event event = eventRepository.findByName(name);
 		List<Task> tasks = taskRepository.findByName(name);
 		
 //		tasks.add(new Task(9, 9, "Party", "user", "games", "gkabf", LocalDate.now().plusYears(2), "Management", true));
