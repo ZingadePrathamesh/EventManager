@@ -32,7 +32,7 @@ public class SecurityController {
 		if(authentication.authenticate(username, password)) {
 			model.put("username",username);
 			model.put("password",password);
-			return "landing";
+			return "homepage";
 		}
 		return "login";
 	}

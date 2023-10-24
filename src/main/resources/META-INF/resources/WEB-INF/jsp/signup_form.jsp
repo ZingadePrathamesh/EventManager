@@ -14,7 +14,7 @@
 
 <body>
     <div id="signup" class="container">
-        <form:form ud="signup_f" action="" method = "POST" modelAttribute="userInfo">
+        <form:form ud="signup_f" action="" method = "POST" modelAttribute="member">
             <div class="text1">
                 Sign Up
             </div>
@@ -23,7 +23,7 @@
             <form:label for="l_name" path="lastname">Last Name</form:label>
             <form:input type="text" placeholder="Last Name" path="lastname" required="required"/>
 
-            <label for="skills">Skills</label>
+            <label for="skills" path = "skill">Skills</label>
 
             <div id="skills">
 
@@ -34,10 +34,10 @@
 
                 <div id="skills_item" class="list_item">
                     <ul>
-                        <li id="one" onclick="get_value(this)"> Media </li>
-                        <li id="two" onclick="get_value(this)"> Management </li>
-                        <li id="three" onclick="get_value(this)"> documentation </li>
-                        <li id="four" onclick="get_value(this)"> Content Curation </li>
+                        <li id="one" onclick="get_value(this)" path = "skill"> Media </li>
+                        <li id="two" onclick="get_value(this)" path = "skill"> Management </li>
+                        <li id="three" onclick="get_value(this)" path = "skill"> documentation </li>
+                        <li id="four" onclick="get_value(this)" path = "skill"> Content Curation </li>
                     </ul>
                 </div>
 

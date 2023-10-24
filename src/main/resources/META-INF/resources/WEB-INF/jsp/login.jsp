@@ -25,7 +25,7 @@
 	            
 	            <div id="forget_p">
 	                <a href="#">Forget Password?</a>
-	                <a href="signup-form">Sign Up</a>
+	                <a href="signup-page">Sign Up</a>
 	            </div>
 	            
 	            <input type = "submit" class = "btn">

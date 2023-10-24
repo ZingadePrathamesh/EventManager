@@ -6,10 +6,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="UserInfo")
-public class UserInfo {
+public class Member {
 	
-	public UserInfo() {
+	public Member(int id, String firstname, String lastname, String skill, int age, String password) {
+		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.skill = skill;
+		this.age = age;
+		this.password = password;
+	}
+
+
+	public Member() {
 		
 	}
 	
@@ -19,22 +29,11 @@ public class UserInfo {
 	@Id
 	@GeneratedValue
 	private String firstname;
-
 	private String lastname;
 	private String skill;
 	private int age;
 	private String password;
 	
-	
-	public UserInfo(int id, String firstname, String lastname, String skill, int age, String password) {
-		super();
-		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.skill = skill;
-		this.age = age;
-		this.password = password;
-	}
 
 
 	public int getId() {
