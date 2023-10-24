@@ -94,14 +94,15 @@ public class EventController {
 		Event event = eventService.findByName(name);
 		List<Task> tasks = taskRepository.findByName(name);
 		
+//		tasks.add(new Task(9, 9, "Party", "user", "games", "gkabf", LocalDate.now().plusYears(2), "Management", true));
 		model.put("event", event);
 		model.put("tasks", tasks);
 		return "event_view";
 	}
 	
+	
 	// Post-Method for viewing the  Event
 	// use to view the existing event in the list
-	
 	@RequestMapping(value = "event-view", method = RequestMethod.POST)
 	private String postEventView(ModelMap model, @Valid Event event) {
 		eventService.updateEvent(event);

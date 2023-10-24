@@ -2,6 +2,7 @@ package com.eventmanager.EventManager.TaskManager;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -51,4 +52,28 @@ public class TaskController {
 			return "redirect:tasks-list";
 		}
 	
+		
+		// Get-Method
+		//for task form
+		@RequestMapping(value="task-form-from-event",method=RequestMethod.GET)
+		public String eventViewTaskForm(ModelMap model, @RequestParam String name) {
+			Task task = new Task(0,0,name,"admin","","",LocalDate.now(),"",false);
+			
+			model.put("task", task);
+			return "task_form";
+		}
+		
+		//Post-method 
+		//post method for task form
+		@RequestMapping(value="task-form-from-event",method=RequestMethod.POST)
+		public String eventViewTaskSubmitPage(ModelMap model, Task task) {
+			
+			List<Task> tasks = taskRepository.findByUsername("admin");
+			System.out.println(task.getName());
+		
+			task.setUsername("admin");
+			taskRepository.save(task);
+			model.addAttribute("tasks",tasks );
+			return "redirect:event-view?name="+ task.getName();
+		}
 }

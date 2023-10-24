@@ -28,6 +28,6 @@
 			</tbody>
 		</table>
 		
-		<div><a href="task-form?name=${task.name}" class=" btn btn-success">Add Task</a></div>
+		<div><a href="task-form-from-event?name=${event.name}" class=" btn btn-success">Add Task</a></div>
 		
 		</div>

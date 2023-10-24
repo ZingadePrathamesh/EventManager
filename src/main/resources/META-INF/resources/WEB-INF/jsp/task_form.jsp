@@ -45,15 +45,33 @@
 					<form:errors class = "text-warning" path = "deadline"/>
 				</fieldset>
 				
-	    	<!--<fieldset class = "mb-3">
+	    		<fieldset class = "mb-3">
 					<form:label path="isDone">Status</form:label>
 					<form:select path = "isDone" class= "form-select">
-						<option value = "Upcoming">Upcoming</option>
-						<option value = "Ongoing">Ongoing</option>
-						<option value = "Completed">Completed</option>
+						<option value = "true">Completed</option>
+						<option value = "false">Pending</option>
 					</form:select>
 					<form:errors class = "text-warning" path = "isDone"/>
-				</fieldset>   -->	
+				</fieldset>	
+				
+	    		<fieldset class = "mb-3">
+					<form:label path="domain">Domain</form:label>
+					<form:select path = "domain" class= "form-select">
+						<option value = "Media">Media</option>
+						<option value = "Management">Management</option>
+						<option value = "Content Curation">Content Curation</option>
+						<option value = "Catering">Catering</option>
+					</form:select>
+					<form:errors class = "text-warning" path = "domain"/>
+				</fieldset>	
+				
+				
+				
+				<fieldset class = "mb-3">
+					<form:label path="name">Event Name</form:label>
+					<form:input type = "text" path = "name" required="required"/>
+					<form:errors class = "text-warning" path = "name"/>
+				</fieldset>
 				
 	    		<fieldset class = "mb-3">
 					<input type = "submit" class = "btn btn-primary"/>
