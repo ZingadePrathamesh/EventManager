@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,48 +13,48 @@
 </head>
 
 <body>
-    <div id="signup">
-        <form id="signup_f" action="" method = "POST">
+    <div id="signup" class="container">
+        <form:form ud="signup_f" action="" method = "POST" modelAttribute="userInfo">
             <div class="text1">
                 Sign Up
             </div>
-            <label for="f_name">First Name</label>
-            <input type="text" placeholder="First Name" required>
-            <label for="l_name">Last Name</label>
-            <input type="text" placeholder="Last Name" required>
+            <form:label for="f_name" path="firstname">First Name</form:label>
+            <form:input type="text" placeholder="First Name" path="firstname" required="required"/>
+            <form:label for="l_name" path="lastname">Last Name</form:label>
+            <form:input type="text" placeholder="Last Name" path="lastname" required="required"/>
 
             <label for="skills">Skills</label>
 
             <div id="skills">
 
-                <div id="skills_main">
+                <div id="skills_main" >
                     <div id="skills_in"></div>
                     <button id="btn_menu"><img src="./Images/down.png" alt=""></button>
                 </div>
 
                 <div id="skills_item" class="list_item">
                     <ul>
-                        <li id="one" onclick="get_value(this)"> dog </li>
-                        <li id="two" onclick="get_value(this)"> cat </li>
-                        <li id="three" onclick="get_value(this)"> crow </li>
-                        <li id="four" onclick="get_value(this)"> cow </li>
+                        <li id="one" onclick="get_value(this)"> Media </li>
+                        <li id="two" onclick="get_value(this)"> Management </li>
+                        <li id="three" onclick="get_value(this)"> documentation </li>
+                        <li id="four" onclick="get_value(this)"> Content Curation </li>
                     </ul>
                 </div>
 
             </div>
 
-            <label for="age">Age</label>
-            <input type="number" placeholder="Age" required>
-            <label for="password">Enter Password</label>
-            <input type="password" placeholder="Password" required>
-            <label for="r_password">Repeat Password</label>
-            <input type="password" placeholder="Repeat Password" required>
+            <form:label for="age" path="age">Age</form:label>
+            <form:input type="number" placeholder="Age" path="age"  required="required"/>
+            <form:label for="password" path="password">Enter Password</form:label>
+            <form:input type="password" placeholder="Password" path="password" required="required"/>
+            <form:label for="r_password" path="password">Repeat Password</form:label>
+            <form:input type="password" placeholder="Repeat Password" path="password" required="required"/>
             <div id="forget_p">
-                <a href="login_form.html">Already have an account? Login</a>
+                <a href="login-page">Already have an account? Login</a>
             </div>
             
             
-			<input type = "submit" class = "btn btn-success"/>
+			<input type="submit" class="btn btn-success"/>
 			
             <!--
             <div id="btn_div">
@@ -59,7 +62,7 @@
                 <button id="btn2"> <img src="./Images/google_logo.png" alt="google_logo"> Google</button>
             </div>  
             -->
-        </form>
+        </form:form>
     </div>
 </body>
 

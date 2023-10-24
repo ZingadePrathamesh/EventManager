@@ -40,7 +40,7 @@
 	  
 				
 	    		<fieldset class = "mb-3">
-					<form:label path="deadline">End Date</form:label>
+					<form:label path="deadline">Deadline</form:label>
 					<form:input type = "text" path = "deadline" required="required"/>
 					<form:errors class = "text-warning" path = "deadline"/>
 				</fieldset>
@@ -81,15 +81,17 @@
 	    
 	    </div>
 	    
-	    <script type="text/javascript">
-	    $('#deadline').datepicker({
-	        format: 'mm/dd/yyyy',
-	    });
-	    </script>
+	   
 	    
-		<script type="text/javascript" src = "webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-	    <script type="text/javascript" src = "webjars/bootstrap/5.3.2/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src = "webjars/jquery/3.7.1/jquery.min.js"></script>
+		<script src = "webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+	    <script src = "webjars/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+		<script src = "webjars/jquery/3.7.1/jquery.min.js"></script>
+		
+		 <script type="text/javascript">
+		 $('#deadline').datepicker({
+			    format: 'mm/dd/yyyy'
+			});
+	    </script>
 	</body>
 
 </html>

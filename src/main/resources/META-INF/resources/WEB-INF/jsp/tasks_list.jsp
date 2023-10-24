@@ -41,7 +41,7 @@
 						<td>${task.deadline}</td>
 						<td>${task.isDone}</td>
 						<td>${task.domain}</td>
-						<td><a class ="btn btn-primary" href = "update-event?id=${task.id}">Update</a></td>
+						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}">Update</a></td>
 					<%-- 	<td><a class ="btn btn-secondary" href = "event-view?id=${task.id}">View</a></td> --%>
 					</tr>
 				</c:forEach>

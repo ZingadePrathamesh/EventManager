@@ -21,7 +21,11 @@
                     <li><a href="#"> About Us </a></li>
                 </ul>
 
-                <button id="login_btn1" class="nav">Login</button>
+              
+                 <button id="login_btn1" class="nav"><a href="login-page"></a>Login</button>
+                 
+                
+               
 
             </nav>
         </div>
@@ -36,7 +40,7 @@
                 <br>
                 And make easy to handle the event schedules.
             </p>
-            <a href="loginpage">
+            <a href="login-page">
   				<button id="login_btn2">Login</button>
 			</a>
         </div>

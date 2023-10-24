@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.eventmanager.EventManager.event.Event;
+
+import jakarta.validation.Valid;
+
 @Controller
 public class TaskController {
 
@@ -76,5 +80,32 @@ public class TaskController {
 			taskRepository.save(task);
 			model.addAttribute("tasks",tasks );
 			return "redirect:event-view?name="+ task.getEventname();
+		}
+		
+		// Get-Method for updating Event
+		// it shows the event form page
+
+		@RequestMapping(value = "update-task", method = RequestMethod.GET)
+		private String getUpdateEventForm(ModelMap model , @RequestParam int id) {
+//			Event tempEvent = eventService.findById(id);
+			Optional<Task> tempTask = taskRepository.findById(id);
+			model.put("event",tempTask);
+			return "task_form";
+		}
+		
+		// Post-Method for Updating the  Event
+		// use to update the existing event in the list
+		
+		@RequestMapping(value = "update-task", method = RequestMethod.POST)
+		private String postUpdateEventForm(ModelMap model, @Valid Task task) {
+			int id = task.getId();
+			
+			taskRepository.deleteById(id);
+			
+			taskRepository.save(new Task(id, 0,task.getEventname(), "admin",task.getTaskName(),task.getDescription(), 
+					task.getDeadline(),task.getDomain(), task.getisDone()));
+			
+//			eventService.updateEvent(event);
+			return "redirect:tasks-list";
 		}
 }
