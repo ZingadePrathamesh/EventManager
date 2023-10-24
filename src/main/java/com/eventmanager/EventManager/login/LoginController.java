@@ -1,5 +1,7 @@
 package com.eventmanager.EventManager.login;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,18 +10,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.eventmanager.EventManager.Security.AuthentificationService;
+import com.eventmanager.EventManager.TaskManager.Task;
+import com.eventmanager.EventManager.TaskManager.TaskRepository;
 
 @Controller
 @SessionAttributes("firstname")
 public class LoginController {
 	
 	private AuthentificationService authentificationService;
-	
+	private TaskRepository taskRepository;
 
 	
-	public LoginController(AuthentificationService authentificationService) {
+	public LoginController(AuthentificationService authentificationService,TaskRepository taskRepository) {
 		super();
 		this.authentificationService = authentificationService;
+		this.taskRepository = taskRepository;
 	}
 
 	// landing page
@@ -36,19 +41,25 @@ public class LoginController {
 
 	// Post-Method
 	@RequestMapping(value = "loginpage", method = RequestMethod.POST)
-	private String eventManagerHomePage(@RequestParam String firstname,@RequestParam String password, ModelMap model) {
+	private String eventManagerHomePage( ModelMap model,@RequestParam String firstname,@RequestParam String password) {
 		if(authentificationService.authenticateAdmin(firstname, password)) {
 			return "homepage";
 		}
 		else if(authentificationService.authenticateUser(firstname, password)) {
+			// redirecting to homepage
+			//taking tasks from repository and showing it in the user home page task list
+		List<Task> tasks = taskRepository.findByUsername(firstname);
+		
+		model.addAttribute("tasks",tasks);
 			return "user_homepage";
 		}
 		else
 		return "redirect:loginpage";
 	}
 	
+	
 
-	// redirecting to homepage
+	
 	@RequestMapping("homepage")
 	private String eventManagerRedirectHomePage() {
 		return "homepage";
@@ -65,7 +76,7 @@ public class LoginController {
 	private String eventManageTeamPage() {
 		return "team";
 	}
-
+  
 
 
 	

@@ -40,7 +40,7 @@
                 <br>
                 And make easy to handle the event schedules.
             </p>
-            <a href="login-page">
+            <a href="loginpage">
   				<button id="login_btn2">Login</button>
 			</a>
         </div>

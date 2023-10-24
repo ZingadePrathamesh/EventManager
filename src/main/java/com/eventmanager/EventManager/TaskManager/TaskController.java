@@ -1,6 +1,7 @@
 package com.eventmanager.EventManager.TaskManager;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,10 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.eventmanager.EventManager.event.Event;
-
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -35,9 +34,15 @@ public class TaskController {
 	// Get-Method
 	//for task form
 		@RequestMapping(value="task-form",method=RequestMethod.GET)
-		public String eventManagerTaskFormPage(ModelMap model) {
-			Task task = new Task(0,0,"","admin","","",LocalDate.now(),"",false);
-			model.put("task", task);
+		public String eventManagerTaskFormPage(ModelMap model,HttpSession session) {
+			
+			// Retrieve the existing list of firstnames from the session
+		    List<String> firstnames = (List<String>) session.getAttribute("firstnames");
+		 
+			Task task = new Task(0,0,"","admin","","",LocalDate.now(),"",false,"");
+			
+			model.addAttribute("firstnames",firstnames);
+			model.put("task", task);	
 			return "task_form";
 		}
 		
@@ -60,9 +65,15 @@ public class TaskController {
 		// Get-Method
 		//for task form
 		@RequestMapping(value="task-form-from-event",method=RequestMethod.GET)
-		public String eventViewTaskForm(ModelMap model, @RequestParam String name) {
-			Task task = new Task(0,0,name,"admin","","",LocalDate.now(),"",false);
-			System.out.println("get:" + task.getEventname());
+		public String eventViewTaskForm(ModelMap model, @RequestParam String name,HttpSession session) {
+			
+			// Retrieve the existing list of firstnames from the session
+		    List<String> firstnames = (List<String>) session.getAttribute("firstnames");
+		    
+			Task task = new Task(0,0,name,"admin","","",LocalDate.now(),"",false,"");
+			System.out.println("get:" + task.getEventname());session.setAttribute("firstnames", firstnames);
+				
+			model.addAttribute("firstnames",firstnames);
 			model.put("task", task);
 			return "task_form";
 		}
@@ -103,7 +114,7 @@ public class TaskController {
 			taskRepository.deleteById(id);
 			
 			taskRepository.save(new Task(id, 0,task.getEventname(), "admin",task.getTaskName(),task.getDescription(), 
-					task.getDeadline(),task.getDomain(), task.getisDone()));
+					task.getDeadline(),task.getDomain(), task.getisDone(),task.getMember()));
 			
 //			eventService.updateEvent(event);
 			return "redirect:tasks-list";

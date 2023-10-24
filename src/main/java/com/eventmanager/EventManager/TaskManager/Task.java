@@ -20,15 +20,15 @@ public class Task {
 	private int eventId;
 	private String eventname;
 	private String username;
-	
 	private String taskName;
 	private String description;
 	private LocalDate deadline;
 	private String domain;
 	private boolean isDone;
+	private String member;
 	
 	public Task(int id, int eventId, String eventname, String username, String taskName, String description,
-			LocalDate deadline, String domain, boolean isDone) {
+			LocalDate deadline, String domain, boolean isDone,String member) {
 		super();
 		this.id = id;
 		this.eventId = eventId;
@@ -39,6 +39,7 @@ public class Task {
 		this.deadline = deadline;
 		this.domain = domain;
 		this.isDone = isDone;
+		this.member = member;
 	}
 	public int getId() {
 		return id;
@@ -94,11 +95,19 @@ public class Task {
 	public void setisDone(boolean isDone) {
 		this.isDone = isDone;
 	}
+	
+	public String getMember() {
+		return member;
+	}
+	
+	public void setMember(String member) {
+		this.member=member;
+	}
 	@Override
 	public String toString() {
 		return "Task [id=" + id + ", eventId=" + eventId + ", eventname=" + eventname + ", username=" + username
 				+ ", taskName=" + taskName + ", description=" + description + ", deadline=" + deadline + ", domain="
-				+ domain + ", isDone=" + isDone + "]";
+				+ domain + ", isDone=" + isDone + ",member=" + member +"]";
 	}
 	
 

@@ -65,7 +65,16 @@
 					<form:errors class = "text-warning" path = "domain"/>
 				</fieldset>	
 				
+				<fieldset class="mb-3">
+				   <form:label path="member">Members</form:label>
+				    <form:select path="member" class="form-select">
+				        <c:forEach items="${firstnames}" var="firstname">
+				            <option value="${firstname}">${firstname}</option>
+				        </c:forEach>
+				    </form:select>
 				
+					<form:errors class = "text-warning" path = "member"/>
+				</fieldset>	
 				
 				<fieldset class = "mb-3">
 					<form:label path="eventname">Event Name</form:label>

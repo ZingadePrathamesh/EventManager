@@ -42,6 +42,10 @@
 				</c:forEach>
 			</tbody>
 		</table>
+					<fieldset class = "ml-5">
+					<a href="create-event" class ="btn btn-primary">Add Event</a>
+					</fieldset>
+				
 		
 	    <script type="text/javascript" src = "webjars/bootstrap/5.3.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src = "webjars/jquery/3.7.1/jquery.min.js"></script>

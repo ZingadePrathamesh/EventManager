@@ -36,6 +36,12 @@ public class SecurityController {
 		}
 		return "login";
 	}
+	
+	@RequestMapping("landing-page")
+	private String gotoLandingPage() {
+		return "landing";
+	}
+
 
 	
 	

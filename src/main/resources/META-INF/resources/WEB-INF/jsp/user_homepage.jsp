@@ -101,8 +101,9 @@
 						<td>${task.eventname}</td> 
 						<td>${task.taskName}</td>
 						<td>${task.deadline}</td>
+						<td>${task.isDone}</td>
 					</tr>
-				</c:forEach>
+				</c:forEach>	
 			</tbody>
 		</table>
     </div>

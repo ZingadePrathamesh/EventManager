@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="homepage">
+                    <a href="landing-page">
                         <img src="./Images/home_icon.png" alt="home">
                         <span>Home</span>
                     </a>
