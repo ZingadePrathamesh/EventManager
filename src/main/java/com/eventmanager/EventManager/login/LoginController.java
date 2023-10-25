@@ -18,7 +18,6 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @SessionAttributes("firstname")
 public class LoginController {
-	private String currentUser;
 	
 	private AuthentificationService authentificationService;
 	private TaskRepository taskRepository;
@@ -45,16 +44,15 @@ public class LoginController {
 	// Post-Method
 	@RequestMapping(value = "loginpage", method = RequestMethod.POST)
 	private String eventManagerHomePage( ModelMap model,@RequestParam String firstname,@RequestParam String password) {
-		if(authentificationService.authenticateAdmin(firstname, password)) {
-			return "homepage";
-		}
-		else if(authentificationService.authenticateUser(firstname, password)) {
-			currentUser = firstname;
+			if(authentificationService.authenticateAdmin(firstname, password)) {
+				return "homepage";
+			}
+			else if(authentificationService.authenticateUser(firstname, password)) {
 			// redirecting to homepage
 			//taking tasks from repository and showing it in the user home page task list
-		List<Task> tasks = taskRepository.findByUsername(firstname);
+			List<Task> tasks = taskRepository.findByUsername(firstname);
 		
-		model.addAttribute("tasks",tasks);
+			model.addAttribute("tasks",tasks);
 			return "user_homepage";
 		}
 		else

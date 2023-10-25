@@ -1,7 +1,6 @@
 package com.eventmanager.EventManager.TaskManager;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.eventmanager.EventManager.user.Member;
+import com.eventmanager.EventManager.user.MemberRepository;
+
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -18,9 +20,11 @@ import jakarta.validation.Valid;
 public class TaskController {
 
 	private TaskRepository taskRepository;
-	public TaskController(TaskRepository taskRepository) {
+	private MemberRepository memberRepository;
+	public TaskController(TaskRepository taskRepository, MemberRepository memberRepository) {
 		super();
 		this.taskRepository = taskRepository;
+		this.memberRepository = memberRepository;
 	}
 
 	// Task list method
@@ -37,11 +41,12 @@ public class TaskController {
 		public String eventManagerTaskFormPage(ModelMap model,HttpSession session) {
 			
 			// Retrieve the existing list of firstnames from the session
-		    List<String> firstnames = (List<String>) session.getAttribute("firstnames");
+//		    List<String> firstnames = (List<String>) session.getAttribute("firstnames");
 		 
 			Task task = new Task(0,0,"","admin","","",LocalDate.now(),"",false,"");
-			
-			model.addAttribute("firstnames",firstnames);
+			List<Member> members = memberRepository.findAll();
+			model.addAttribute("members", members);
+//			model.addAttribute("firstnames",firstnames);
 			model.put("task", task);	
 			return "task_form";
 		}
@@ -68,12 +73,11 @@ public class TaskController {
 		public String eventViewTaskForm(ModelMap model, @RequestParam String name,HttpSession session) {
 			
 			// Retrieve the existing list of firstnames from the session
-		    List<String> firstnames = (List<String>) session.getAttribute("firstnames");
-		    
+			List<Member> members = memberRepository.findAll();
+			model.addAttribute("members", members);
+			
 			Task task = new Task(0,0,name,"admin","","",LocalDate.now(),"",false,"");
-			System.out.println("get:" + task.getEventname());session.setAttribute("firstnames", firstnames);
-				
-			model.addAttribute("firstnames",firstnames);
+					
 			model.put("task", task);
 			return "task_form";
 		}
@@ -97,11 +101,18 @@ public class TaskController {
 		// it shows the event form page
 
 		@RequestMapping(value = "update-task", method = RequestMethod.GET)
-		private String getUpdateEventForm(ModelMap model , @RequestParam int id) {
-//			Event tempEvent = eventService.findById(id);
-			Optional<Task> tempTask = taskRepository.findById(id);
-			model.put("event",tempTask);
-			return "task_form";
+		private String getUpdateEventForm(ModelMap model, @RequestParam int id) {
+		    Optional<Task> tempTask = taskRepository.findById(id);
+		    
+		    if (tempTask.isPresent()) {
+		        model.addAttribute("task", tempTask.get()); // Add "task" to the model
+				List<Member> members = memberRepository.findAll();
+				model.addAttribute("members", members);
+		        return "task_form";
+		    } else {
+		        // Handle the case where the task with the given ID is not found
+		        return "redirect:tasks-list"; // or show an error page
+		    }
 		}
 		
 		// Post-Method for Updating the  Event

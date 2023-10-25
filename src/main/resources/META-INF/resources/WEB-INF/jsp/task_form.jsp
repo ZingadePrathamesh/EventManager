@@ -7,7 +7,7 @@
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>Event Manager</title>
-	    <link rel="stylesheet" href="webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css">
 	</head>
 
@@ -68,8 +68,8 @@
 				<fieldset class="mb-3">
 				   <form:label path="member">Members</form:label>
 				    <form:select path="member" class="form-select">
-				        <c:forEach items="${firstnames}" var="firstname">
-				            <option value="${firstname}">${firstname}</option>
+				        <c:forEach items="${members}" var="member">
+				            <option value="${member.firstname}">${member.firstname}</option>
 				        </c:forEach>
 				    </form:select>
 				
@@ -90,17 +90,16 @@
 	    
 	    </div>
 	    
-	   
-	    
-		<script src = "webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-	    <script src = "webjars/bootstrap/5.3.2/js/bootstrap.min.js"></script>
-		<script src = "webjars/jquery/3.7.1/jquery.min.js"></script>
-		
-		 <script type="text/javascript">
-		 $('#deadline').datepicker({
-			    format: 'mm/dd/yyyy'
+	   	<script type="text/javascript" src = "webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src = "webjars/jquery/3.6.0/jquery.min.js"></script>
+		<script type="text/javascript" src = "webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+		<script type="text/javascript">
+			$('#deadline').datepicker({
+			    format: 'yyyy-mm-dd',
 			});
-	    </script>
+		</script>
+	    
+
 	</body>
 
 </html>

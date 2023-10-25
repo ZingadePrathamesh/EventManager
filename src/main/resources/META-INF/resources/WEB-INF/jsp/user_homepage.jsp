@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/homepage_style.css" type = "text/css">
-    <link rel="stylesheet" href="webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
     
     <style>
         .lists-div{
