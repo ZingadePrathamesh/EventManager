@@ -43,11 +43,13 @@ public class LoginController {
 
 	// Post-Method
 	@RequestMapping(value = "loginpage", method = RequestMethod.POST)
-	private String eventManagerHomePage( ModelMap model,@RequestParam String firstname,@RequestParam String password) {
-			if(authentificationService.authenticateAdmin(firstname, password)) {
+	private String eventManagerHomePage( ModelMap model,@RequestParam String firstname,@RequestParam String password, HttpSession session) {
+			
+		if(authentificationService.authenticateAdmin(firstname, password)) {
 				return "homepage";
 			}
 			else if(authentificationService.authenticateUser(firstname, password)) {
+			session.setAttribute("firstname", firstname);
 			// redirecting to homepage
 			//taking tasks from repository and showing it in the user home page task list
 			List<Task> tasks = taskRepository.findByMember(firstname);
@@ -68,8 +70,8 @@ public class LoginController {
 	private String userHomePage(ModelMap model, HttpSession session) {
 		String firstname = (String)session.getAttribute("firstname");
 		
-		List<Task> tasks = taskRepository.findByMember(firstname);		
-		model.put("tasks", tasks);
+		List<Task> tasks = taskRepository.findByMember(firstname);
+		model.addAttribute("tasks",tasks);
 		
 		return "user_homepage";
 	}
@@ -78,8 +80,9 @@ public class LoginController {
 	@RequestMapping("user-tasks-list")
 	private String userTaskPage(ModelMap model, HttpSession session) {
 		String firstname = (String)session.getAttribute("firstname");
-		List<Task> tasks = taskRepository.findByMember(firstname);		
-		model.put("tasks", tasks);
+		System.out.println("firstname "+firstname);
+		List<Task> tasks = taskRepository.findByMember(firstname);
+		model.addAttribute("tasks",tasks);
 		return "user_tasks_list";
 	}
 	
