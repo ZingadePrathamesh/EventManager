@@ -68,7 +68,11 @@ public class LoginController {
 	}
 	//from user navbar to homepage
 	@RequestMapping("user_homepage")
-	private String userHomePage() {
+	private String userHomePage(ModelMap model, HttpSession session) {
+		String firstname = (String)session.getAttribute("firstname");
+		List<Task> tasks = taskRepository.findByMember(firstname);		
+		model.put("tasks", tasks);
+		
 		return "user_homepage";
 	}
 	
