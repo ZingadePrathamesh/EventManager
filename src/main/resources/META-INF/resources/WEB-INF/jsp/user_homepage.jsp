@@ -107,8 +107,8 @@
 			</tbody>
 		</table>
     </div>
-    
-    <div class = "container lists-div">
+    <!-- 
+    	<div class = "container lists-div">
     	<h5 class = "title-text"><strong>Your Events</strong></h5>
     	<hr>
     	<table class = "table">
@@ -132,6 +132,8 @@
 			</tbody>
 		</table>
     </div>
+     -->
+    
         
 
     <script src="homepage_js.js"></script>
