@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="logout">
+                    <a href="landing-page">
                         <img src="./Images/home_icon.png" alt="home">
                         <span>Logout</span>
                     </a>

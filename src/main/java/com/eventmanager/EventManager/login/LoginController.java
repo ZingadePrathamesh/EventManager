@@ -50,8 +50,7 @@ public class LoginController {
 			else if(authentificationService.authenticateUser(firstname, password)) {
 			// redirecting to homepage
 			//taking tasks from repository and showing it in the user home page task list
-			List<Task> tasks = taskRepository.findByUsername(firstname);
-		
+			List<Task> tasks = taskRepository.findByMember(firstname);
 			model.addAttribute("tasks",tasks);
 			return "user_homepage";
 		}
@@ -68,6 +67,7 @@ public class LoginController {
 	@RequestMapping("user_homepage")
 	private String userHomePage(ModelMap model, HttpSession session) {
 		String firstname = (String)session.getAttribute("firstname");
+		
 		List<Task> tasks = taskRepository.findByMember(firstname);		
 		model.put("tasks", tasks);
 		
@@ -102,6 +102,10 @@ public class LoginController {
 		return "team";
 	}
   
+	@RequestMapping("landing-page")
+	private String logoutLandingPage() {
+		return "landing";
+	}
 
 
 	
