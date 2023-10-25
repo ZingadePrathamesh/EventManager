@@ -30,7 +30,7 @@
         <div id="nav_list" class="showMenu">
             <ul id="list_ul">
                 <li>
-                    <a href="user-profile-page">
+                    <a href="profile-page">
                         <img src="./Images/profile_icon.png" alt="profile">
                         <span>Profile</span>
                     </a>

@@ -18,11 +18,11 @@
                     <li><a href="homepage"> Home </a></li>
                     <li><a href="event-list"> Event </a></li>
                     <li><a href="#"> Calender </a></li>
-                    <li><a href="#"> About Us </a></li>
+                    <li><a href="about-us"> About Us </a></li>
                 </ul>
 
               
-                 <button id="login_btn1" class="nav"><a href="login-page"></a>Login</button>
+                <!--  <button id="login_btn1" class="nav"><a href="login-page"></a>Login</button> -->
                  
                 
                

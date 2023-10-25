@@ -42,7 +42,7 @@
                 <li>
                     <a href="landing-page">
                         <img src="./Images/home_icon.png" alt="home">
-                        <span>Home</span>
+                        <span>Logout</span>
                     </a>
                 </li>
             </ul>
@@ -91,7 +91,7 @@
         </ul>
     </div>
 
-    <div id="task_event">
+    <%-- <div id="task_event">
         <div id="task" class="task_event_div">
 
             <div id="task_head1" class="task_event_head1">
@@ -187,7 +187,7 @@
         </div>
     </div>
     
-    <div>Welcome ${username}</div>
+    <div>Welcome ${username}</div> --%>
 
     <script src="homepage_js.js"></script>
 </body>
