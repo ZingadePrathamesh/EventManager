@@ -48,7 +48,7 @@
             </ul>
         </div>
     </nav>
-
+	<h5>${firstname}</h5>
 
     <div id="feature_div"> <!-- make a scrollview -->
         <div class="feature">

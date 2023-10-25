@@ -10,20 +10,18 @@
 	    <link rel="stylesheet" href="webjars/bootstrap/5.3.2/css/bootstrap.min.css">
 	</head>
 
-	<body>
+	<body style= "padding:16px;">
 	<!-- navigation bar shortcut -->
-		<%@include file = "common/navbar.jspf" %>
+		<%@include file = "common/user_navbar.jspf" %>
 		
 	    <h5>Your Events</h5>
-	    <h2>${firstname}</h2>
+	    <h6>Welcome ${firstname}!</h6>
 	    <hr>
 	    <table class = "table">
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>Name</th>
 					<th>Start Date</th>
-					<th>End Date</th>
 					<th>Status</th>
 					<th></th>
 				</tr>
@@ -31,10 +29,8 @@
 			<tbody>
 				<c:forEach items = "${events}" var = "event">
 					<tr>
-						<td>${event.id}</td>
 						<td>${event.name}</td>
 						<td>${event.startDate}</td>
-						<td>${event.endDate}</td>
 						<td>${event.status}</td>
 						<td><a href ="event-view?name=${event.name}" class ="btn btn-success" >View</a></td>
 					</tr>

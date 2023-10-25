@@ -13,9 +13,12 @@ import com.eventmanager.EventManager.Security.AuthentificationService;
 import com.eventmanager.EventManager.TaskManager.Task;
 import com.eventmanager.EventManager.TaskManager.TaskRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @SessionAttributes("firstname")
 public class LoginController {
+	private String currentUser;
 	
 	private AuthentificationService authentificationService;
 	private TaskRepository taskRepository;
@@ -46,6 +49,7 @@ public class LoginController {
 			return "homepage";
 		}
 		else if(authentificationService.authenticateUser(firstname, password)) {
+			currentUser = firstname;
 			// redirecting to homepage
 			//taking tasks from repository and showing it in the user home page task list
 		List<Task> tasks = taskRepository.findByUsername(firstname);
@@ -57,8 +61,27 @@ public class LoginController {
 		return "redirect:loginpage";
 	}
 	
+	//from user homepage to user event list
+	@RequestMapping("user-event-list")
+	private String userEventPage() {
+		return "user_event_list";
+	}
+	//from user navbar to homepage
+	@RequestMapping("user_homepage")
+	private String userHomePage() {
+		return "user_homepage";
+	}
 	
-
+	//from user homepage to user task list
+	@RequestMapping("user-tasks-list")
+	private String userTaskPage(ModelMap model, HttpSession session) {
+		String firstname = (String)session.getAttribute("firstname");
+		List<Task> tasks = taskRepository.findByMember(firstname);		
+		model.put("tasks", tasks);
+		return "user_tasks_list";
+	}
+	
+	
 	
 	@RequestMapping("homepage")
 	private String eventManagerRedirectHomePage() {

@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
 	public List<Task> findByUsername(String username);
+	public List<Task> findByMember(String firstname);
 	public List<Task> findByEventname(String eventname);
 }

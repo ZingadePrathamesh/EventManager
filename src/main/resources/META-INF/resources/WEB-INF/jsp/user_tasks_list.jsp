@@ -10,9 +10,9 @@
 	    <link rel="stylesheet" href="webjars/bootstrap/5.3.2/css/bootstrap.min.css">
 	</head>
 
-	<body>
+	<body style= "padding:16px;">
 	<!-- navigation bar shortcut -->
-		<%@include file = "common/navbar.jspf" %>
+		<%@include file = "common/user_navbar.jspf" %>
 		
 	    <h5>Your Tasks</h5>
 	    <hr>

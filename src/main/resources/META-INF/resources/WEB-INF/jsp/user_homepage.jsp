@@ -30,25 +30,25 @@
         <div id="nav_list" class="showMenu">
             <ul id="list_ul">
                 <li>
-                    <a href="profile-page">
+                    <a href="user-profile-page">
                         <img src="./Images/profile_icon.png" alt="profile">
                         <span>Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="team-page">
+                    <a href="user-team-page">
                         <img src="./Images/team_icon.png" alt="team">
                         <span>Team</span>
                     </a>
                 </li>
                 <li>
-                    <a href="tasks-list">
+                    <a href="user-tasks-list">
                         <img src="./Images/task_icon.png" alt="task">
                         <span>Tasks</span>
                     </a>
                 </li>
                 <li>
-                    <a href="event-list">
+                    <a href="user-event-list">
                         <img src="./Images/event_icon.png" alt="event">
                         <span>Event</span>
                     </a>
