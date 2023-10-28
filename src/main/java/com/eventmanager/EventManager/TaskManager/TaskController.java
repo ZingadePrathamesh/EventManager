@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.eventmanager.EventManager.event.Event;
+import com.eventmanager.EventManager.event.EventRepository;
 import com.eventmanager.EventManager.user.Member;
 import com.eventmanager.EventManager.user.MemberRepository;
 
@@ -20,11 +22,13 @@ import jakarta.validation.Valid;
 public class TaskController {
 
 	private TaskRepository taskRepository;
+	private EventRepository eventRepository;
 	private MemberRepository memberRepository;
-	public TaskController(TaskRepository taskRepository, MemberRepository memberRepository) {
+	public TaskController(TaskRepository taskRepository, MemberRepository memberRepository , EventRepository eventRepository) {
 		super();
 		this.taskRepository = taskRepository;
 		this.memberRepository = memberRepository;
+		this.eventRepository = eventRepository;
 	}
 
 	// Task list method
@@ -45,9 +49,12 @@ public class TaskController {
 		 
 			Task task = new Task(0,0,"","admin","","",LocalDate.now(),"",false,"");
 			List<Member> members = memberRepository.findAll();
-			model.addAttribute("members", members);
-//			model.addAttribute("firstnames",firstnames);
+			List<Event> events = eventRepository.findByStatus("Upcoming");
+			events.addAll(eventRepository.findByStatus("Ongoing"));
+			model.addAttribute("members", members); 		//model.addAttribute("firstnames",firstnames);
+
 			model.put("task", task);	
+			model.put("events", events);	
 			return "task_form";
 		}
 		

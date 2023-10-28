@@ -62,7 +62,7 @@ public class EventController {
 		if(result.hasErrors()) {
 			return "event_form";
 		}
-		Event tempEvent = new Event(0, event.getName(), event.getDescription(), LocalDate.now().plusMonths(2), 
+		Event tempEvent = new Event(0, event.getEventName(), event.getDescription(), LocalDate.now().plusMonths(2), 
 				LocalDate.now().plusYears(1), event.getStatus());
 		eventRepository.save(tempEvent);
 //		eventService.addNewEvent(tempEvent);
@@ -86,11 +86,11 @@ public class EventController {
 	
 	@RequestMapping(value = "update-event", method = RequestMethod.POST)
 	private String postUpdateEventForm(ModelMap model, @Valid Event event) {
-		int id = event.getId();
+		int id = event.getEventId();
 		
 		eventRepository.deleteById(id);
 		
-		eventRepository.save(new Event(id, event.getName(), event.getDescription(), 
+		eventRepository.save(new Event(id, event.getEventName(), event.getDescription(), 
 				event.getStartDate(), event.getEndDate(), event.getStatus()));
 		
 //		eventService.updateEvent(event);
@@ -105,7 +105,7 @@ public class EventController {
 	private String getEventView(ModelMap model , @RequestParam String name) {
 		
 //		Event event = eventService.findByName(name);
-		Event event = eventRepository.findByName(name);
+		Event event = eventRepository.findByEventName(name);
 		List<Task> tasks = taskRepository.findByEventname(name);
 		
 //		tasks.add(new Task(9, 9, "Party", "user", "games", "gkabf", LocalDate.now().plusYears(2), "Management", true));

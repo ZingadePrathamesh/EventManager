@@ -27,31 +27,31 @@ public class EventService {
 	}
 	
 	public Event findById(int id) {
-		Predicate<? super Event> predicate = event -> event.getId() == id;
+		Predicate<? super Event> predicate = event -> event.getEventId() == id;
 		Event event = events.stream().filter(predicate).findFirst().get();
 		return event;
 	}
 	public Event findByName(String name) {
-		Predicate<? super Event> predicate = event -> event.getName().equalsIgnoreCase(name);
+		Predicate<? super Event> predicate = event -> event.getEventName().equalsIgnoreCase(name);
 		Event event = events.stream().filter(predicate).findFirst().get();
 		
 		return event;
 	}
 	
 	public void addNewEvent(Event event){
-		events.add(new Event(++eventCount, event.getName(), event.getDescription(), event.getStartDate(), event.getEndDate(), event.getStatus()));
+		events.add(new Event(++eventCount, event.getEventName(), event.getDescription(), event.getStartDate(), event.getEndDate(), event.getStatus()));
 	}
 	
 	public void deleteById(int id){
-		Predicate<? super Event> predicate = event -> event.getId() == id;
+		Predicate<? super Event> predicate = event -> event.getEventId() == id;
 		events.removeIf(predicate);
 	}
 	
 	public void updateEvent(Event event){
-		int id = event.getId();
+		int id = event.getEventId();
 		
 		deleteById(id);
 		
-		events.add(new Event(id, event.getName(), event.getDescription(), event.getStartDate(), event.getEndDate(), event.getStatus()));
+		events.add(new Event(id, event.getEventName(), event.getDescription(), event.getStartDate(), event.getEndDate(), event.getStatus()));
 	}
 }

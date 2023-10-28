@@ -16,10 +16,10 @@ public class Event {
 	
 	
 	
-	public Event(int id, String name, String description, LocalDate startDate, LocalDate endDate, String status) {
+	public Event(int eventId, String eventName, String description, LocalDate startDate, LocalDate endDate, String status) {
 		super();
-		this.id = id;
-		this.name = name;
+		this.eventId = eventId;
+		this.eventName = eventName;
 		this.description = description;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -30,51 +30,80 @@ public class Event {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private int eventId;
 	
 	@Size(min = 5, message = "Enter atleast 5 character!")
-	private String name;
+	private String eventName;
 	private String description;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private String status;
-	
-	
-	
+	public int getEventId() {
+		return eventId;
+	}
+
+
+
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
+	}
+
+
+
+	public String getEventName() {
+		return eventName;
+	}
+
+
+
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
+	}
+
+
+
 	public String getDescription() {
 		return description;
 	}
+
+
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
+
 	public LocalDate getStartDate() {
 		return startDate;
 	}
+
+
+
 	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
+
+
+
 	public LocalDate getEndDate() {
 		return endDate;
 	}
+
+
+
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
+
+
+
 	public String getStatus() {
 		return status;
 	}
+
+
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
@@ -83,9 +112,13 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", startDate=" + startDate + ", endDate=" + endDate + ", status="
-				+ status + "]";
+		return "Event [eventId=" + eventId + ", eventName=" + eventName + ", description=" + description
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

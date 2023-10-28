@@ -78,7 +78,11 @@
 				
 				<fieldset class = "mb-3">
 					<form:label path="eventname">Event Name</form:label>
-					<form:input type = "text" path = "eventname" required="required"/>
+					<form:select path="member" class="form-select">
+				        <c:forEach items="${events}" var="event">
+				        	<option value="${event.eventName}">${event.eventName}</option>
+				        </c:forEach>
+				    </form:select>
 					<form:errors class = "text-warning" path = "eventname"/>
 				</fieldset>
 				

@@ -24,7 +24,13 @@
 						<td>${task.taskName}</td>
 						<td>${task.description}</td>
 						<td>${task.deadline}</td>
-						<td>${task.isDone}</td>
+						<td><c:if test="${!task.isDone}">
+							     	Completed   
+							    </c:if>
+							    <c:if test="${task.isDone}">
+							        Pending
+							    </c:if>
+						</td>
 						<td>${task.domain}</td>
 						<td>${task.member}</td>
 						<td><a class ="btn btn-primary" href = "update-event?id=${task.id}">Update</a></td>
