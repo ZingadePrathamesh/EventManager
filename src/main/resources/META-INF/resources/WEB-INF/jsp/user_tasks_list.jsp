@@ -25,6 +25,7 @@
 						<th>Deadline</th>
 						<th>Status</th>
 						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -32,8 +33,15 @@
 						<tr>
 							<td>${task.eventname}</td> 
 							<td>${task.taskName}</td>
-							<td>${task.deadline}</td>
-							<td><input class="form-check-input" type="checkbox" id="task-checkbox"/></td>
+							<td>${task.deadline}</td>							 	
+							<td><c:if test="${!task.isDone}">
+							     	Completed   
+							    </c:if>
+							    <c:if test="${task.isDone}">
+							        Pending
+							    </c:if>
+						    </td>
+							<td><a class = "btn btn-primary" href = "task-status-update?${task.isDone}">Done</a></td>
 							<td><a class ="btn btn-secondary" href = "event-view?id=${task.id}">View</a></td>
 						</tr>
 					</c:forEach>
