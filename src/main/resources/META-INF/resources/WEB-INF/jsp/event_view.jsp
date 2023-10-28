@@ -14,7 +14,7 @@
 		<%@ include file = "common/navbar.jspf" %>
 		
 		<div class = "container">
-			<h5><strong>Event name:</strong> ${event.name} </h5>
+			<h5><strong>Event name:</strong> ${event.eventName} </h5>
 			<hr>
 			<h5><strong>Event description:</strong> ${event.description} </h5> <hr>
 			<h5><strong>status:</strong> ${event.status} </h5> <hr>
