@@ -20,9 +20,9 @@
 	    <div class = "container">
 	    	<form:form method = "POST" modelAttribute="event" class ="form-group">
 	    		<fieldset class = "mb-3">
-					<form:label path="name">Name</form:label>
-					<form:input class= "form-control" type = "text" path = "name" required="required"/>
-					<form:errors class = "text-warning" path = "name"/>
+					<form:label path="eventName">Name</form:label>
+					<form:input class= "form-control" type = "text" path = "eventName" required="required"/>
+					<form:errors class = "text-warning" path = "eventName"/>
 				</fieldset>
 				
 	    		<fieldset class = "mb-3">
@@ -31,11 +31,7 @@
 					<form:errors class = "text-warning" path = "description"/>
 				</fieldset>
 				
-	    		<!-- <fieldset class = "mb-3">
-					<form:label path="id">Id</form:label>
-					<form:input class = "input-box" type = "hidden" path = "id" required="required"/>
-					<form:errors class = "text-warning" path = "id"/>
-				</fieldset> -->
+	 
 				
 	    		<fieldset class = "mb-3">
 					<form:label path="startDate">Start Date</form:label>
