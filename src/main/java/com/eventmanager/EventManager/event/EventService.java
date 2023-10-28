@@ -3,12 +3,18 @@ package com.eventmanager.EventManager.event;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EventService {
+	
+	@Autowired
+	private EventRepository  eventRepository;
+	
 	
 	private static int eventCount = -1;
 	 
@@ -47,11 +53,8 @@ public class EventService {
 		events.removeIf(predicate);
 	}
 	
-	public void updateEvent(Event event){
-		int id = event.getEventId();
-		
-		deleteById(id);
-		
-		events.add(new Event(id, event.getEventName(), event.getDescription(), event.getStartDate(), event.getEndDate(), event.getStatus()));
-	}
+	//Service for updating event
+		public void updateEvent(Event event) {
+
+		}
 }

@@ -86,14 +86,7 @@ public class EventController {
 	
 	@RequestMapping(value = "update-event", method = RequestMethod.POST)
 	private String postUpdateEventForm(ModelMap model, @Valid Event event) {
-		int id = event.getEventId();
-		
-		eventRepository.deleteById(id);
-		
-		eventRepository.save(new Event(id, event.getEventName(), event.getDescription(), 
-				event.getStartDate(), event.getEndDate(), event.getStatus()));
-		
-//		eventService.updateEvent(event);
+		eventService.updateEvent(event);
 		return "redirect:event-list";
 	}
 	
@@ -119,8 +112,12 @@ public class EventController {
 	// use to view the existing event in the list
 	@RequestMapping(value = "event-view", method = RequestMethod.POST)
 	private String postEventView(ModelMap model, @Valid Event event) {
-		eventService.updateEvent(event);
+//		eventService.updateEvent(event);
 		return "redirect:event-list";
 	}
+	
+	
+
+	
 
 }
