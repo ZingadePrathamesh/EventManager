@@ -51,14 +51,14 @@
 						<td>${task.domain}</td>
 						<td>${task.member}</td>
 						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}">Update</a></td>
-					<%-- 	<td><a class ="btn btn-secondary" href = "event-view?id=${task.id}">View</a></td> --%>
+						<td><a class ="btn btn-warning" href = "delete-task?taskId=${task.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		
-		<div><a href="task-form?name=${task.eventname}" class=" btn btn-success">Add Task</a></div>
-		
+		<div>
+			<a href="task-form?name=${task.eventname}" class=" btn btn-success">Add Task</a></div>
 		</div>
 		
 <%@ include file = "common/footer.jspf" %>

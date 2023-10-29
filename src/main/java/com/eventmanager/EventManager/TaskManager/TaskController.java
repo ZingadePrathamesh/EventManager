@@ -184,6 +184,13 @@ public class TaskController {
 			
 		}
 		
+		//for deleting tasks
+		@RequestMapping("delete-task")
+		private String deleteTask(@RequestParam(required = true) int taskId) {
+			taskRepository.deleteById(taskId);
+			return "redirect:admin-tasks-list";
+		}
+		
 		
 		
 		
