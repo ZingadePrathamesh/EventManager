@@ -1,6 +1,8 @@
 package com.eventmanager.EventManager.event;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -127,7 +129,16 @@ public class EventController {
 	
 	@RequestMapping("delete-event")
 	private String deleteEvent(@RequestParam int eventId) {
+		List<Task> tempTask = taskRepository.findByEventId(eventId);
+		List<Integer> ids = new ArrayList<>();
+	    for (Task task : tempTask) {
+	      ids.add(task.getId());
+	    }
+		
+
+		taskRepository.deleteAllById(ids);
 		eventRepository.deleteById(eventId);
+		
 		return "redirect:admin-event-list";
 	}
 

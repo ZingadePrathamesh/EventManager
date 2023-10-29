@@ -94,9 +94,14 @@ public class LoginController {
 	}
 
 	// profile page
-	@RequestMapping("profile-page")
-	private String eventManageProfilePage() {
-		return "profile";
+	@RequestMapping("profile-page-user")
+	private String eventManageUserProfilePage() {
+		return "profile_user";
+	}
+	
+	@RequestMapping("profile-page-admin")
+	private String eventManageAdminProfilePage() {
+		return "profile_admin";
 	}
 
 	// team page

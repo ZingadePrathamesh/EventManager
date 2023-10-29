@@ -176,7 +176,7 @@ public class TaskController {
 			
 			taskRepository.deleteById(id);
 			
-			taskRepository.save(new Task(id, 0,task.getEventname(), "admin",task.getTaskName(),task.getDescription(), 
+			taskRepository.save(new Task(id, task.getEventId(),task.getEventname(), "admin",task.getTaskName(),task.getDescription(), 
 					task.getDeadline(),task.getDomain(), task.getisDone(),task.getMember()));
 			
 //			eventService.updateEvent(event);
@@ -189,6 +189,26 @@ public class TaskController {
 		private String deleteTask(@RequestParam(required = true) int taskId) {
 			taskRepository.deleteById(taskId);
 			return "redirect:admin-tasks-list";
+		}
+		
+		@RequestMapping("delete-task-from-view")
+		private String deleteTaskFromView(ModelMap model,@Valid Task task,@RequestParam(required = true) int taskId) {
+			
+			int eventId = task.getEventId();
+			
+//			System.out.println("eventName:"+eventName);
+			
+			Event event = eventRepository.findByEventId(eventId);
+			List<Task> tasks = taskRepository.findByEventId(eventId);
+			
+			taskRepository.deleteById(taskId);
+//			System.out.println("eventId :"+eventId);
+			
+//			tasks.add(new Task(9, 9, "Party", "user", "games", "gkabf", LocalDate.now().plusYears(2), "Management", true));
+			model.put("event", event);
+			model.put("tasks", tasks);
+			System.out.println("eventId:"+task.getEventId());
+			return "redirect:event-view?eventId="+eventId + "&eventName="+event.getEventName();
 		}
 		
 		
