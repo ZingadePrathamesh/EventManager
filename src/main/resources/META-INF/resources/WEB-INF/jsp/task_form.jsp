@@ -12,7 +12,7 @@
 	</head>
 
 	<body>
-		<%@ include file = "common/navbar.jspf" %>
+		<%@ include file = "common/admin_navbar.jspf" %>
 		
 		
 	    <hr>
@@ -78,7 +78,7 @@
 				
 				<fieldset class = "mb-3">
 					<form:label path="eventname">Event Name</form:label>
-					<form:select path="member" class="form-select">
+					<form:select path="eventname" class="form-select">
 				        <c:forEach items="${events}" var="event">
 				        	<option value="${event.eventName}">${event.eventName}</option>
 				        </c:forEach>

@@ -11,7 +11,7 @@
 	</head>
 
 	<body>
-		<%@ include file = "common/admin_navbar.jspf" %>
+		<%@ include file = "common/user_navbar.jspf" %>
 		
 		<div class = "container">
 			<h5><strong>Event name:</strong> ${event.eventName} </h5>

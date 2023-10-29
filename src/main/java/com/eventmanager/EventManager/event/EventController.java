@@ -37,7 +37,7 @@ public class EventController {
 	// will be taking
 	// during the login page
 
-	@RequestMapping("event-list")
+	@RequestMapping("admin-event-list")
 	private String eventManagerEventListPage(ModelMap model) {
 
 		model.addAttribute("events", eventRepository.findAll());
@@ -66,7 +66,7 @@ public class EventController {
 				LocalDate.now().plusYears(1), event.getStatus());
 		eventRepository.save(tempEvent);
 //		eventService.addNewEvent(tempEvent);
-		return "redirect:event-list";
+		return "redirect:admin-event-list";
 	}
 	
 	
@@ -86,8 +86,12 @@ public class EventController {
 	
 	@RequestMapping(value = "update-event", method = RequestMethod.POST)
 	private String postUpdateEventForm(ModelMap model, @Valid Event event) {
-		eventService.updateEvent(event);
-		return "redirect:event-list";
+		int eventID = event.getEventId();
+		
+		eventRepository.deleteById(eventID);
+		
+		eventRepository.save(event);
+		return "redirect:admin-event-list";
 	}
 	
 	
@@ -115,14 +119,14 @@ public class EventController {
 	@RequestMapping(value = "event-view", method = RequestMethod.POST)
 	private String postEventView(ModelMap model, @Valid Event event) {
 //		eventService.updateEvent(event);
-		return "redirect:event-list";
+		return "redirect:admin-event-list";
 	}
 	
 	
 	@RequestMapping("delete-event")
 	private String deleteEvent(@RequestParam int eventId) {
 		eventRepository.deleteById(eventId);
-		return "redirect:event-list";
+		return "redirect:admin-event-list";
 	}
 
 }

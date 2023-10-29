@@ -12,7 +12,7 @@
 
 	<body>
 	<!-- navigation bar shortcut -->
-		<%@include file = "common/navbar.jspf" %>
+		<%@include file = "common/admin_navbar.jspf" %>
 		
 	    <h3>Tasks List</h3>
 	    <hr>
@@ -25,7 +25,7 @@
 					<th>Task Name</th>
 					<th>Description</th>
 					<th>Deadline</th>
-					<th>isDone</th>
+					<th>Status</th>
 					<th>Domain</th>
 					<th>Members</th>
 					<th></th>
@@ -40,7 +40,14 @@
 						<td>${task.taskName}</td>
 						<td>${task.description}</td>
 						<td>${task.deadline}</td>
-						<td>${task.isDone}</td>
+						<td>
+							<c:if test="${!task.isDone}">
+						     	Completed   
+						    </c:if>
+						    <c:if test="${task.isDone}">
+						        Pending
+						    </c:if>
+						</td>
 						<td>${task.domain}</td>
 						<td>${task.member}</td>
 						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}">Update</a></td>

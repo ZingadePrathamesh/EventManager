@@ -35,7 +35,7 @@ public class TaskController {
 	}
 
 	// Task list method
-	@RequestMapping("tasks-list")
+	@RequestMapping("admin-tasks-list")
 	public String eventManagerTaskListPage(ModelMap model) {
 		List<Task> tasks = taskRepository.findByUsername("admin");
 		model.addAttribute("tasks",tasks);
@@ -73,7 +73,7 @@ public class TaskController {
 			task.setUsername("admin");
 			taskRepository.save(task);
 			model.addAttribute("tasks",tasks );
-			return "redirect:tasks-list";
+			return "redirect:admin-tasks-list";
 		}
 	
 		
@@ -122,14 +122,17 @@ public class TaskController {
 		private String getUpdateEventForm(ModelMap model, @RequestParam int id) {
 		    Optional<Task> tempTask = taskRepository.findById(id);
 		    
+		    
 		    if (tempTask.isPresent()) {
 		        model.addAttribute("task", tempTask.get()); // Add "task" to the model
 				List<Member> members = memberRepository.findAll();
+				List<Event> events = eventRepository.findAll();
 				model.addAttribute("members", members);
+				model.addAttribute("events", events);
 		        return "task_form";
 		    } else {
 		        // Handle the case where the task with the given ID is not found
-		        return "redirect:tasks-list"; // or show an error page
+		        return "redirect:admin-tasks-list"; // or show an error page
 		    }
 		}
 		
@@ -146,6 +149,6 @@ public class TaskController {
 					task.getDeadline(),task.getDomain(), task.getisDone(),task.getMember()));
 			
 //			eventService.updateEvent(event);
-			return "redirect:tasks-list";
+			return "redirect:admin-tasks-list";
 		}
 }

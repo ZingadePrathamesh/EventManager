@@ -12,7 +12,7 @@
 
 	<body>
 	<!-- navigation bar shortcut -->
-		<%@include file = "common/navbar.jspf" %>
+		<%@include file = "common/admin_navbar.jspf" %>
 		
 	    <h3>Event List</h3>
 	    <hr>

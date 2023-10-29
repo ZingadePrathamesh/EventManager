@@ -12,7 +12,7 @@
 	</head>
 
 	<body>
-		<%@ include file = "common/navbar.jspf" %>
+		<%@ include file = "common/admin_navbar.jspf" %>
 		
 		
 	    <hr>
@@ -29,6 +29,12 @@
 					<form:label path="description">Description</form:label>
 					<form:input class= "form-control" type = "text" path = "description" required="required"/>
 					<form:errors class = "text-warning" path = "description"/>
+				</fieldset>
+				
+	    		<fieldset class = "mb-3">
+					<form:label path="eventId">event Id</form:label>
+					<form:input class= "form-control" type = "hidden" path = "eventId" required="required"/>
+					<form:errors class = "text-warning" path = "eventId"/>
 				</fieldset>
 	 
 				
