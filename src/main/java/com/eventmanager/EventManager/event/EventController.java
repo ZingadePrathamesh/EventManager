@@ -121,7 +121,7 @@ public class EventController {
 	
 	@RequestMapping("delete-event")
 	private String deleteEvent(@RequestParam int eventId) {
-		System.out.println("eventId:"+eventId);
+		eventRepository.deleteById(eventId);
 		return "redirect:event-list";
 	}
 

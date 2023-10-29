@@ -27,7 +27,6 @@
 		</div>
 		
 		<div>
-			<a>${event.eventId}</a>
 			<a href ="delete-event?eventId=${event.eventId}" class="btn btn-success">Delete</a>
 		</div>
 		
