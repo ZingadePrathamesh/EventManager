@@ -58,10 +58,13 @@
 	    		<fieldset class = "mb-3">
 					<form:label path="domain">Domain</form:label>
 					<form:select path = "domain" class= "form-select">
-						<option value = "Media">Media</option>
 						<option value = "Management">Management</option>
+						<option value = "Promotion">Promotion</option>
+						<option value = "Graphic Desigin">Graphic Desigin</option>
+						<option value = "Cinematography">Cinematography</option>
+						<option value = "Social Media">Social Media</option>
 						<option value = "Content Curation">Content Curation</option>
-						<option value = "Catering">Catering</option>
+						<option value = "Technical">Technical</option>
 					</form:select>
 					<form:errors class = "text-warning" path = "domain"/>
 				</fieldset>	

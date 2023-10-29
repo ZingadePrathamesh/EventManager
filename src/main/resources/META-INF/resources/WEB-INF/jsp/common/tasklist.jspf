@@ -4,25 +4,23 @@
 	    <table class = "table" >
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Event Name</th>	
-					<th>Task Name</th>
-					<th>Description</th>
-					<th>Deadline</th>
-					<th>Status</th>
-					<th>Domain</th>
-					<th>Members</th>
-					<th></th>
-					<th></th>
+					<th width = 20%>Task Name</th>
+					<th width = 20%>Event Name</th>	
+					<!-- <th width = 10%>Description</th> -->
+					<th width = 10%>Deadline</th>
+					<th width = 10%>Status</th>
+					<!-- <th width = 10%>Domain</th> -->
+					<th width = 20%>Members</th>
+					<th width = 7.5%></th>
+					<th width = 10%></th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items = "${tasks}" var = "task">
 					<tr>
-						<td>${task.id}</td>
-						<td>${task.eventname}</td>	
 						<td>${task.taskName}</td>
-						<td>${task.description}</td>
+						<td>${task.eventname}</td>	
+						<%-- <td>${task.description}</td> --%>
 						<td>${task.deadline}</td>
 						<td><c:if test="${!task.isDone}">
 							     	Completed   
@@ -31,10 +29,10 @@
 							        Pending
 							    </c:if>
 						</td>
-						<td>${task.domain}</td>
+						<%-- <td>${task.domain}</td> --%>
 						<td>${task.member}</td>
 						<td><a class ="btn btn-primary" href = "update-update-task?id=${task.id}&eventId=${task.eventId}">Update</a></td>
-						<%-- 	<td><a class ="btn btn-secondary" href = "event-view?id=${task.id}">View</a></td> --%>
+						<td><a class ="btn btn-secondary" href = "event-view?id=${task.id}">View</a></td>
 						<input type="hidden" name="eventId" value="${task.eventId}">
 					</tr>
 				</c:forEach>

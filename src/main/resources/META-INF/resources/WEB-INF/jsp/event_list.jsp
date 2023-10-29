@@ -9,6 +9,7 @@
 	    <title>Event Manager</title>
 	   <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 	   <link rel="stylesheet" href="Eventstyle.css">
+	   
 	</head>
 
 	<body style="margin-bottom: 200px; margin-left:10px; margin-right:10px;">
@@ -22,13 +23,13 @@
 	    <table class = "table" style="margin-bottom: 40px;">
 			<thead style="background-color: #8E8FFA; color: black;" >
 				<tr>
-					<th>ID</th>
-					<th width = 500px >Name</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Status</th>
-					<th></th>
-					<th></th>
+					<th width = 5%>ID</th>
+					<th width = 36%>Name</th>
+					<th width = 12%>Start Date</th>
+					<th width = 12%>End Date</th>
+					<th width = 12%>Status</th>
+					<th width = 12%></th>
+					<th width = 11%></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -50,13 +51,13 @@
 	    <table class = "table" style="margin-bottom: 40px;">
 			<thead style="background-color: #8E8FFA; color: black;">
 				<tr>
-					<th>ID</th>
-					<th width = 500px>Name</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Status</th>
-					<th></th>
-					<th></th>
+					<th width = 5%>ID</th>
+					<th width = 36%>Name</th>
+					<th width = 12%>Start Date</th>
+					<th width = 12%>End Date</th>
+					<th width = 12%>Status</th>
+					<th width = 12%></th>
+					<th width = 11%></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -78,13 +79,13 @@
 	    <table class = "table" style="margin-bottom: 40px;">
 			<thead style="background-color: #8E8FFA; color: black;">
 				<tr>
-					<th>ID</th>
-					<th width = 500px>Name</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>Status</th>
-					<th></th>
-					<th></th>
+					<th width = 5%>ID</th>
+					<th width = 36%>Name</th>
+					<th width = 12%>Start Date</th>
+					<th width = 12%>End Date</th>
+					<th width = 12%>Status</th>
+					<th width = 12%></th>
+					<th width = 11%></th>
 				</tr>
 			</thead>
 			<tbody>

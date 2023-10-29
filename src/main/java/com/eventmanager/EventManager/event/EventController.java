@@ -51,7 +51,7 @@ public class EventController {
 
 	@RequestMapping(value = "create-event", method = RequestMethod.GET)
 	private String getCreateEventForm(ModelMap model) {
-		Event tempEvent = new Event(0, "", "" , LocalDate.now().plusMonths(2), LocalDate.now().plusYears(1), "Upcoming");
+		Event tempEvent = new Event(0, "", "" , LocalDate.now(), LocalDate.now().plusDays(1), "Upcoming");
 		model.put("event",tempEvent);
 		return "event_form";
 	}

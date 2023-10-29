@@ -8,6 +8,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>Event Manager</title>
 	    <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="event-form.css">
 	    <link rel="stylesheet" href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css">
 	</head>
 
@@ -17,56 +18,63 @@
 		
 	    <hr>
 	    
-	    <div class = "container">
-	    	<form:form method = "POST" modelAttribute="event" class ="form-group">
-	    		<fieldset class = "mb-3">
-					<form:label path="eventName">Name</form:label>
-					<form:input class= "form-control" type = "text" path = "eventName" required="required"/>
-					<form:errors class = "text-warning" path = "eventName"/>
-				</fieldset>
-				
-	    		<fieldset class = "mb-3">
-					<form:label path="description">Description</form:label>
-					<form:input class= "form-control" type = "text" path = "description" required="required"/>
-					<form:errors class = "text-warning" path = "description"/>
-				</fieldset>
-				
-	    		<fieldset class = "mb-3">
-					<form:label path="eventId">event Id</form:label>
-					<form:input class= "form-control" type = "hidden" path = "eventId" required="required"/>
-					<form:errors class = "text-warning" path = "eventId"/>
-				</fieldset>
-	 
-				
-	    		<fieldset class = "mb-3">
-					<form:label path="startDate">Start Date</form:label>
-					<form:input type = "text" path = "startDate" required="required"/>
-					<form:errors class = "text-warning" path = "startDate"/>
-				</fieldset>
-				
-	    		<fieldset class = "mb-3">
-					<form:label path="endDate">End Date</form:label>
-					<form:input type = "text" path = "endDate" required="required"/>
-					<form:errors class = "text-warning" path = "endDate"/>
-				</fieldset>
-				
-	    		<fieldset class = "mb-3">
-					<form:label path="status">Status</form:label>
-					<form:select path = "status" class= "form-select">
-						<option value = "Upcoming">Upcoming</option>
-						<option value = "Ongoing">Ongoing</option>
-						<option value = "Completed">Completed</option>
-					</form:select>
-					<form:errors class = "text-warning" path = "status"/>
-				</fieldset>
-				
-	    		<fieldset class = "mb-3">
-					<input type = "submit" class = "btn btn-primary"/>
-				</fieldset>
-				
-	    	</form:form> 
+	    <div id ="main">
 	    
+		    <div class = "container" id="add-event">
+		    	<form:form method = "POST" modelAttribute="event" class ="form-group" id="add-event_f">
+		    		<div class="text1">
+                    	Add Event
+                	</div>
+		    		<fieldset class = "mb-3">
+						<form:label path="eventName">Name</form:label>
+						<form:input class= "form-control" type = "text" path = "eventName" required="required"/>
+						<form:errors class = "text-warning" path = "eventName"/>
+					</fieldset>
+					
+		    		<fieldset class = "mb-3">
+						<form:label path="description">Description</form:label>
+						<form:input class= "form-control" type = "text" path = "description" required="required"/>
+						<form:errors class = "text-warning" path = "description"/>
+					</fieldset>
+					
+		    		<fieldset class = "mb-3">
+						<form:label path="eventId">event Id</form:label>
+						<form:input class= "form-control" type = "hidden" path = "eventId" required="required"/>
+						<form:errors class = "text-warning" path = "eventId"/>
+					</fieldset>
+		 
+					
+		    		<fieldset class = "mb-3">
+						<form:label path="startDate">Start Date</form:label>
+						<form:input type = "text" path = "startDate" required="required"/>
+						<form:errors class = "text-warning" path = "startDate"/>
+					</fieldset>
+					
+		    		<fieldset class = "mb-3">
+						<form:label path="endDate">End Date</form:label>
+						<form:input type = "text" path = "endDate" required="required"/>
+						<form:errors class = "text-warning" path = "endDate"/>
+					</fieldset>
+					
+		    		<fieldset class = "mb-3">
+						<form:label path="status">Status</form:label>
+						<form:select path = "status" class= "form-select">
+							<option value = "Upcoming">Upcoming</option>
+							<option value = "Ongoing">Ongoing</option>
+							<option value = "Completed">Completed</option>
+						</form:select>
+						<form:errors class = "text-warning" path = "status"/>
+					</fieldset>
+					
+		    		<div id="btn_div">
+                    	<button id="btn2">Submit</button>
+                	</div>
+					
+		    	</form:form> 
+		    
+		    </div>
 	    </div>
+	    
 	    
 		
 	   	<script type="text/javascript" src = "webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
