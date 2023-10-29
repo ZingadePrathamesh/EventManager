@@ -27,7 +27,8 @@
 		</div>
 		
 		<div>
-			<a href ="delete-event" class="btn btn-success">Delete</a>
+			<a>${event.eventId}</a>
+			<a href ="delete-event?eventId=${event.eventId}" class="btn btn-success">Delete</a>
 		</div>
 		
 		
