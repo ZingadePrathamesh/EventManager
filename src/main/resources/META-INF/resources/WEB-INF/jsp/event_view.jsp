@@ -10,7 +10,7 @@
 	    <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 	</head>
 
-	<body>
+	<body style="margin-bottom:50px;">
 		<%@ include file = "common/admin_navbar.jspf" %>
 		
 		<div class = "container">
@@ -22,12 +22,13 @@
 			<h5><strong>end date:</strong> ${event.endDate} </h5> <hr>
 		</div>
 
- 		<div class =  "container">
+ 		<div class =  "container" style="margin-top:20px;">
 			<%@ include file = "common/tasklist.jspf" %>
 		</div>
 		
 		<div>
-			<a href ="delete-event?eventId=${event.eventId}" class="btn btn-success">Delete</a>
+			<a href ="delete-event?eventId=${event.eventId}" class="btn btn-danger" style="position: absolute;
+  right: 150px; top: 0; top: 50%; transform: translateY(40%);">Delete</a>
 		</div>
 		
 		
