@@ -3,6 +3,8 @@ package com.eventmanager.EventManager.TaskManager;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +16,7 @@ import com.eventmanager.EventManager.event.Event;
 import com.eventmanager.EventManager.event.EventRepository;
 import com.eventmanager.EventManager.user.Member;
 import com.eventmanager.EventManager.user.MemberRepository;
+import com.eventmanager.EventManager.event.*;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -77,13 +80,22 @@ public class TaskController {
 		// Get-Method
 		//for task form
 		@RequestMapping(value="task-form-from-event",method=RequestMethod.GET)
-		public String eventViewTaskForm(ModelMap model, @RequestParam String name,HttpSession session) {
+		public String eventViewTaskForm(ModelMap model, @RequestParam String eventName,HttpSession session) {
 			
 			// Retrieve the existing list of firstnames from the session
 			List<Member> members = memberRepository.findAll();
-			model.addAttribute("members", members);
+			List<Event> tempevents = eventRepository.findByStatus("upcoming");
+			tempevents.addAll(eventRepository.findByStatus("ongoing"));
 			
-			Task task = new Task(0,0,name,"admin","","",LocalDate.now(),"",false,"");
+			List<Event> events = tempevents.stream()
+				    .filter(event -> event.getEventName().equals(eventName))
+				    .collect(Collectors.toList());
+			
+			
+			model.addAttribute("members", members);
+			model.addAttribute("events",events);
+
+			Task task = new Task(0,0,eventName,"admin","","",LocalDate.now(),"",false,"");
 					
 			model.put("task", task);
 			return "task_form";

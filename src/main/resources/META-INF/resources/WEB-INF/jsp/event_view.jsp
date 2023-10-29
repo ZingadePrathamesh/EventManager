@@ -26,6 +26,10 @@
 			<%@ include file = "common/tasklist.jspf" %>
 		</div>
 		
+		<div>
+			<a href ="delete-event" class="btn btn-success">Delete</a>
+		</div>
+		
 		
 		
 		

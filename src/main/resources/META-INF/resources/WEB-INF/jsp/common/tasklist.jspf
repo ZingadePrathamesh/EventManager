@@ -40,6 +40,6 @@
 			</tbody>
 		</table>
 		
-		<div><a href="task-form-from-event?name=${event.eventName}" class=" btn btn-success">Add Task</a></div>
+		<div><a href="task-form-from-event?eventName=${event.eventName}" class=" btn btn-success">Add Task</a></div>
 		
 		</div>

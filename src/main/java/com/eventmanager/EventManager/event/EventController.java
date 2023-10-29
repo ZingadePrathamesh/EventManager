@@ -95,11 +95,13 @@ public class EventController {
 	// Get-Method for viewing Event
 	// it shows the event page
 	@RequestMapping(value = "event-view", method = RequestMethod.GET)
-	private String getEventView(ModelMap model , @RequestParam String name) {
+	private String getEventView(ModelMap model , @RequestParam(required = false) String eventName,@RequestParam int eventId) {
 		
 //		Event event = eventService.findByName(name);
-		Event event = eventRepository.findByEventName(name);
-		List<Task> tasks = taskRepository.findByEventname(name);
+		Event event = eventRepository.findByEventName(eventName);
+		List<Task> tasks = taskRepository.findByEventname(eventName);
+		
+//		System.out.println("eventId :"+eventId);
 		
 //		tasks.add(new Task(9, 9, "Party", "user", "games", "gkabf", LocalDate.now().plusYears(2), "Management", true));
 		model.put("event", event);
@@ -117,7 +119,10 @@ public class EventController {
 	}
 	
 	
-
-	
+	@RequestMapping("delete-event")
+	private String deleteEvent(@RequestParam int eventId) {
+		System.out.println("eventId:"+eventId);
+		return "redirect:event-list";
+	}
 
 }
