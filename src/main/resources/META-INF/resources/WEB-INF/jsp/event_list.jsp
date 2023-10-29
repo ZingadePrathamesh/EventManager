@@ -20,10 +20,10 @@
 	    <h5 >Ongoing</h5>
 <!-- 	    <hr> -->
 	    <table class = "table" style="margin-bottom: 40px;">
-			<thead style="background-color: yellow; color: black;" >
+			<thead style="background-color: #8E8FFA; color: black;" >
 				<tr>
 					<th>ID</th>
-					<th>Name</th>
+					<th width = 500px >Name</th>
 					<th>Start Date</th>
 					<th>End Date</th>
 					<th>Status</th>
@@ -48,10 +48,10 @@
 		<h5>Upcoming</h5>
 <!-- 	    <hr> -->
 	    <table class = "table" style="margin-bottom: 40px;">
-			<thead style="background-color: orange; color: black;">
+			<thead style="background-color: #8E8FFA; color: black;">
 				<tr>
 					<th>ID</th>
-					<th>Name</th>
+					<th width = 500px>Name</th>
 					<th>Start Date</th>
 					<th>End Date</th>
 					<th>Status</th>
@@ -76,10 +76,10 @@
 		<h5>Completed</h5>
 <!-- 	    <hr> -->
 	    <table class = "table" style="margin-bottom: 40px;">
-			<thead style="background-color: #2dfe54; color: black;">
+			<thead style="background-color: #8E8FFA; color: black;">
 				<tr>
 					<th>ID</th>
-					<th>Name</th>
+					<th width = 500px>Name</th>
 					<th>Start Date</th>
 					<th>End Date</th>
 					<th>Status</th>
