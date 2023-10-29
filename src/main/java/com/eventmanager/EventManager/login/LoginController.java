@@ -1,5 +1,6 @@
 package com.eventmanager.EventManager.login;
 
+import java.lang.reflect.Member;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.eventmanager.EventManager.Security.AuthentificationService;
 import com.eventmanager.EventManager.TaskManager.Task;
 import com.eventmanager.EventManager.TaskManager.TaskRepository;
+import com.eventmanager.EventManager.user.MemberRepository;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -21,12 +23,14 @@ public class LoginController {
 	
 	private AuthentificationService authentificationService;
 	private TaskRepository taskRepository;
+	private MemberRepository memberRepository;
 
 	
-	public LoginController(AuthentificationService authentificationService,TaskRepository taskRepository) {
+	public LoginController(AuthentificationService authentificationService,TaskRepository taskRepository,MemberRepository memberRepository) {
 		super();
 		this.authentificationService = authentificationService;
 		this.taskRepository = taskRepository;
+		this.memberRepository = memberRepository; 
 	}
 
 	// landing page
@@ -95,7 +99,10 @@ public class LoginController {
 
 	// profile page
 	@RequestMapping("profile-page-user")
-	private String eventManageUserProfilePage() {
+	private String eventManageUserProfilePage(ModelMap model, HttpSession session) {
+		String firstname = (String)session.getAttribute("firstname");
+		 
+		model.addAttribute("member",memberRepository.findByFirstname(firstname));
 		return "profile_user";
 	}
 	
