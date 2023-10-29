@@ -151,4 +151,39 @@ public class TaskController {
 //			eventService.updateEvent(event);
 			return "redirect:admin-tasks-list";
 		}
+		
+		@RequestMapping(value = "update-update-task", method = RequestMethod.GET)
+		private String getUpdateTaskForm(ModelMap model, @RequestParam int id) {
+		    Optional<Task> tempTask = taskRepository.findById(id);
+		    
+		    
+		    if (tempTask.isPresent()) {
+		        model.addAttribute("task", tempTask.get()); // Add "task" to the model
+				List<Member> members = memberRepository.findAll();
+				List<Event> events = eventRepository.findAll();
+				model.addAttribute("members", members);
+				model.addAttribute("events", events);
+		        return "task_form";
+		    } else {
+		        // Handle the case where the task with the given ID is not found
+		        return "redirect:event-view"; // or show an error page
+		    }
+		}
+		
+		@RequestMapping(value = "update-update-task", method = RequestMethod.POST)
+		private String postUpdateTaskForm(ModelMap model, @Valid Task task) {
+			int id = task.getId();
+			
+			taskRepository.deleteById(id);
+			
+			taskRepository.save(new Task(id, 0,task.getEventname(), "admin",task.getTaskName(),task.getDescription(), 
+					task.getDeadline(),task.getDomain(), task.getisDone(),task.getMember()));
+			
+//			eventService.updateEvent(event);
+			return "redirect:event-view";
+		}
+		
+		
+		
+		
 }

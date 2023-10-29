@@ -40,7 +40,9 @@ public class EventController {
 	@RequestMapping("admin-event-list")
 	private String eventManagerEventListPage(ModelMap model) {
 
-		model.addAttribute("events", eventRepository.findAll());
+		model.addAttribute("ongoingEvents", eventRepository.findByStatus("ongoing"));
+		model.addAttribute("upcomingEvents", eventRepository.findByStatus("upcoming"));
+		model.addAttribute("CompletedEvents", eventRepository.findByStatus("completed"));
 		return "event_list";
 	}
 

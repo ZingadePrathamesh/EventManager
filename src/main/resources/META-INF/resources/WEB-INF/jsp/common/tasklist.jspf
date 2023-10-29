@@ -33,8 +33,9 @@
 						</td>
 						<td>${task.domain}</td>
 						<td>${task.member}</td>
-						<td><a class ="btn btn-primary" href = "update-event?id=${task.id}">Update</a></td>
+						<td><a class ="btn btn-primary" href = "update-update-task?id=${task.id}">Update</a></td>
 					<%-- 	<td><a class ="btn btn-secondary" href = "event-view?id=${task.id}">View</a></td> --%>
+					<input type="hidden" name="eventId" value="${task.eventname}">
 					</tr>
 				</c:forEach>
 			</tbody>

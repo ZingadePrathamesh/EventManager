@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/homepage_style.css" type = "text/css">
+    <link rel="stylesheet" href="homepage_style.css">
     <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
     
     <style>
@@ -23,7 +24,25 @@
 </head>
 
 <body>
-    <nav id="nav_text">
+
+	<%@include file = "common/user_navbar.jspf" %>
+		
+		<div class="create_event_board">
+        	<div>
+	            <div>
+	                <p class = "board_text">Now Create And Manage <br>Event Easily!</p>
+	            </div>
+	            <div>
+	                <p class="board_sub_text">With few easy steps!</p>
+	            </div>
+            	<!-- <a class="create_event_button" href="create-event">Create Event</a> -->
+	
+	        </div>
+	        <div>
+	            <img class="event_board_image" src="./Images/event_plan.png">
+	        </div>
+	    </div>
+    <!-- <nav id="nav_text">
         <span class="text1">EVENT SCHEDULER AND ASSISTANT</span>
         <img src="./Images/menu_icon.png" alt="" id="menu_img" onclick="toggleMenu()">
 
@@ -64,7 +83,7 @@
     </nav>
 
 
-    <div id="feature_div"> <!-- make a scrollview -->
+    <div id="feature_div"> make a scrollview
         <div class="feature">
             <p>Whats's New!</p>
             <a href="#">Read More..</a>
@@ -81,32 +100,35 @@
             <p>Introducing Tasks</p>
             <a href="#">Read More..</a>
         </div>
-    </div>
+    </div> -->
     
-    <div class = "container lists-div">
-    	<h5 class = "title-text"><strong>Your Tasks</strong></h5>
-    	<hr>
-    	<table class = "table" >
-			<thead>
-				<tr>
-					<th>Event Name</th>
-					<th>Task Name</th>
-					<th>Deadline</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items = "${tasks}" var = "task">
-					<tr>
-						<td>${task.eventname}</td> 
-						<td>${task.taskName}</td>
-						<td>${task.deadline}</td>
-						<td>${task.isDone}</td>
-					</tr>
-				</c:forEach>	
-			</tbody>
-		</table>
-    </div>
+<!--     <div class = "container lists-div" style="width: 100%; height: 100%;"> -->
+		<div style="margin-left:30px; margin-right:30px;">
+			<h5 class = "title-text"><strong>Your Tasks</strong></h5>
+			    	<hr>
+			    	<table class = "table" >
+						<thead>
+							<tr>
+								<th>Event Name</th>
+								<th>Task Name</th>
+								<th>Deadline</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items = "${tasks}" var = "task">
+								<tr>
+									<td>${task.eventname}</td> 
+									<td>${task.taskName}</td>
+									<td>${task.deadline}</td>
+									<td>${task.isDone}</td>
+								</tr>
+							</c:forEach>	
+						</tbody>
+					</table>
+			</div>
+    	
+<!--     </div> -->
     <!-- 
     	<div class = "container lists-div">
     	<h5 class = "title-text"><strong>Your Events</strong></h5>

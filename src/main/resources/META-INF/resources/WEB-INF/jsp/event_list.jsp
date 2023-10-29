@@ -8,16 +8,19 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>Event Manager</title>
 	   <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+	   <link rel="stylesheet" href="Eventstyle.css">
 	</head>
 
-	<body>
+	<body style="margin-bottom: 200px; margin-left:10px; margin-right:10px;">
 	<!-- navigation bar shortcut -->
 		<%@include file = "common/admin_navbar.jspf" %>
 		
-	    <h3>Event List</h3>
-	    <hr>
-	    <table class = "table">
-			<thead>
+	    <h3 >Event List</h3>
+	    <hr style="margin-bottom: 50px;">
+	    <h5 >Ongoing</h5>
+<!-- 	    <hr> -->
+	    <table class = "table" style="margin-bottom: 40px;">
+			<thead style="background-color: yellow; color: black;" >
 				<tr>
 					<th>ID</th>
 					<th>Name</th>
@@ -29,7 +32,63 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items = "${events}" var = "event">
+				<c:forEach items = "${ongoingEvents}" var = "event">
+					<tr>
+						<td>${event.eventId}</td>
+						<td>${event.eventName}</td>
+						<td>${event.startDate}</td>
+						<td>${event.endDate}</td>
+						<td>${event.status}</td>
+						<td><a class ="btn btn-primary" href = "update-event?id=${event.eventId}">Update</a></td>
+						<td><a href ="event-view?eventName=${event.eventName}&eventId=${event.eventId}" class ="btn btn-secondary" >View</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<h5>Upcoming</h5>
+<!-- 	    <hr> -->
+	    <table class = "table" style="margin-bottom: 40px;">
+			<thead style="background-color: orange; color: black;">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items = "${upcomingEvents}" var = "event">
+					<tr>
+						<td>${event.eventId}</td>
+						<td>${event.eventName}</td>
+						<td>${event.startDate}</td>
+						<td>${event.endDate}</td>
+						<td>${event.status}</td>
+						<td><a class ="btn btn-primary" href = "update-event?id=${event.eventId}">Update</a></td>
+						<td><a href ="event-view?eventName=${event.eventName}&eventId=${event.eventId}" class ="btn btn-secondary" >View</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<h5>Completed</h5>
+<!-- 	    <hr> -->
+	    <table class = "table" style="margin-bottom: 40px;">
+			<thead style="background-color: #2dfe54; color: black;">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items = "${CompletedEvents}" var = "event">
 					<tr>
 						<td>${event.eventId}</td>
 						<td>${event.eventName}</td>
