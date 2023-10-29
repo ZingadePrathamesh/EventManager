@@ -22,13 +22,16 @@
 			<h5><strong>end date:</strong> ${event.endDate} </h5> <hr>
 		</div>
 
- 		<div class =  "container" style="margin-top:20px;">
+ 		<div class =  "container" style="margin-top:20px; margin-bottom:20px ">
 			<%@ include file = "common/tasklist.jspf" %>
 		</div>
 		
-		<div>
+		<%-- <div>
 			<a href ="delete-event?eventId=${event.eventId}" class="btn btn-danger" style="position: absolute;
-  right: 150px; top: 0; top: 50%; transform: translateY(40%);">Delete</a>
+  			right: 150px; top: 0; top: 50%; transform: translateY(40%);">Delete</a>
+		</div> --%>
+		<div class = "container" style = "display:flex; justify-content: center;">
+			<a href ="delete-event?eventId=${event.eventId}" class="btn btn-danger">Delete Event</a>
 		</div>
 		
 		

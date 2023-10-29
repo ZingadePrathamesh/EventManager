@@ -30,6 +30,7 @@
 					<form:input class= "form-control" type = "text" path = "description" required="required"/>
 					<form:errors class = "text-warning" path = "description"/>
 				</fieldset>
+
 				
 	    		<!-- <fieldset class = "mb-3">
 					<form:label path="id">Id</form:label>

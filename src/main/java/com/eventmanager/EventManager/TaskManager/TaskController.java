@@ -80,7 +80,7 @@ public class TaskController {
 		// Get-Method
 		//for task form
 		@RequestMapping(value="task-form-from-event",method=RequestMethod.GET)
-		public String eventViewTaskForm(ModelMap model, @RequestParam String eventName,HttpSession session) {
+		public String eventViewTaskForm(ModelMap model, @RequestParam(required = true) String eventName, @RequestParam(required=true) int eventId,HttpSession session) {
 			
 			// Retrieve the existing list of firstnames from the session
 			List<Member> members = memberRepository.findAll();
@@ -95,7 +95,7 @@ public class TaskController {
 			model.addAttribute("members", members);
 			model.addAttribute("events",events);
 
-			Task task = new Task(0,0,eventName,"admin","","",LocalDate.now(),"",false,"");
+			Task task = new Task(0,eventId ,eventName,"admin","","",LocalDate.now(),"",false,"");
 					
 			model.put("task", task);
 			return "task_form";
@@ -112,7 +112,7 @@ public class TaskController {
 			task.setUsername("admin");
 			taskRepository.save(task);
 			model.addAttribute("tasks",tasks );
-			return "redirect:event-view?name="+ task.getEventname();
+			return "redirect:event-view?eventName="+ task.getEventname()+"&eventId="+task.getEventId();
 		}
 		
 		// Get-Method for updating Event
@@ -180,7 +180,8 @@ public class TaskController {
 					task.getDeadline(),task.getDomain(), task.getisDone(),task.getMember()));
 			
 //			eventService.updateEvent(event);
-			return "redirect:event-view";
+			return "redirect:event-view?eventId="+task.getEventId() + "&eventName="+task.getEventname();
+			
 		}
 		
 		
