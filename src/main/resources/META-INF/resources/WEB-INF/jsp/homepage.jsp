@@ -34,6 +34,10 @@
 	            <img class="event_board_image" src="./Images/event_plan.png">
 	        </div>
 	    </div>
+	    
+	    <div>
+	    	
+	    </div>
 		</body>
 	
 </html>
