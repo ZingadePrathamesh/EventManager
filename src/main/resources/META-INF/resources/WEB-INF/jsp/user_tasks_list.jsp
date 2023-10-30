@@ -35,10 +35,10 @@
 							<td>${task.taskName}</td>
 							<td>${task.deadline}</td>							 	
 							<td><c:if test="${!task.isDone}">
-							     	Completed   
+							     	   Pending
 							    </c:if>
 							    <c:if test="${task.isDone}">
-							        Pending
+							        Completed
 							    </c:if>
 						    </td>
 							<td><a class = "btn btn-primary" href = "task-status-update?${task.isDone}">Done</a></td>

@@ -22,11 +22,12 @@
 						<td>${task.eventname}</td>	
 						<%-- <td>${task.description}</td> --%>
 						<td>${task.deadline}</td>
-						<td><c:if test="${!task.isDone}">
-							     	Completed   
+						<td>
+							<c:if test="${!task.isDone}">
+							     	Pending   
 							    </c:if>
 							    <c:if test="${task.isDone}">
-							        Pending
+							        Completed
 							    </c:if>
 						</td>
 						<%-- <td>${task.domain}</td> --%>
