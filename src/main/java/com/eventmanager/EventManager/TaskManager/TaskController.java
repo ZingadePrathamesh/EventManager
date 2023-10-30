@@ -40,19 +40,23 @@ public class TaskController {
 	@RequestMapping("admin-tasks-list")
 	public String eventManagerTaskListPage(ModelMap model) {
 		List<Task> tasks = taskRepository.findByUsername("admin");
+		List<Event> events = eventRepository.findAll();
+		
 		
 		List<Task> completedTasks = new ArrayList<>();
 		List<Task> ongoingTasks = new ArrayList<>();
 		List<Task> upcomingTasks = new ArrayList<>();
 
-		for (Task task : tasks) {
-		  if (task.getisDone()) {
-		    completedTasks.add(task);
-		  } else if (task.getDeadline().isBefore(LocalDate.now().plusDays(5))) {
-		    ongoingTasks.add(task);
-		  } else {
-		    upcomingTasks.add(task);
-		  }
+		
+			for(Task task : tasks) {
+				if (task.getisDone()) {
+			    completedTasks.add(task);
+			  } else if (LocalDate.now().plusDays(5).isBefore(task.getDeadline())) {
+				  upcomingTasks.add(task);
+				  
+			  } else {
+				  ongoingTasks.add(task);
+			  }
 		}
 		
 		model.addAttribute("completedTasks",completedTasks);
@@ -109,6 +113,7 @@ public class TaskController {
 			List<Member> members = memberRepository.findAll();
 			List<Event> tempevents = eventRepository.findByStatus("upcoming");
 			tempevents.addAll(eventRepository.findByStatus("ongoing"));
+			tempevents.addAll(eventRepository.findByStatus("completed"));
 			
 			List<Event> events = tempevents.stream()
 				    .filter(event -> event.getEventName().equals(eventName))
@@ -142,14 +147,19 @@ public class TaskController {
 		// it shows the event form page
 
 		@RequestMapping(value = "update-task", method = RequestMethod.GET)
-		private String getUpdateEventForm(ModelMap model, @RequestParam int id) {
+		private String getUpdateEventForm(ModelMap model, @RequestParam int id,@RequestParam(required = true) String eventName) {
 		    Optional<Task> tempTask = taskRepository.findById(id);
 		    
 		    
 		    if (tempTask.isPresent()) {
 		        model.addAttribute("task", tempTask.get()); // Add "task" to the model
 				List<Member> members = memberRepository.findAll();
-				List<Event> events = eventRepository.findAll();
+				List<Event> tempevents = eventRepository.findAll();
+				
+				List<Event> events = tempevents.stream()
+					    .filter(event -> event.getEventName().equals(eventName))
+					    .collect(Collectors.toList());
+				
 				model.addAttribute("members", members);
 				model.addAttribute("events", events);
 		        return "task_form";
@@ -176,17 +186,21 @@ public class TaskController {
 		}
 		
 		@RequestMapping(value = "update-update-task", method = RequestMethod.GET)
-		private String getUpdateTaskForm(ModelMap model, @RequestParam int id) {
+		private String getUpdateTaskForm(ModelMap model, @RequestParam int id,@RequestParam(required = true) String eventName) {
 		    Optional<Task> tempTask = taskRepository.findById(id);
 		    
 		    
 		    if (tempTask.isPresent()) {
 		        model.addAttribute("task", tempTask.get()); // Add "task" to the model
 				List<Member> members = memberRepository.findAll();
-				List<Event> events = eventRepository.findAll();
+				List<Event> tempevents = eventRepository.findAll();
+				
+				List<Event> events = tempevents.stream()
+					    .filter(event -> event.getEventName().equals(eventName))
+					    .collect(Collectors.toList());
 				model.addAttribute("members", members);
 				model.addAttribute("events", events);
-		        return "task_form";
+		        return "task_form2";
 		    } else {
 		        // Handle the case where the task with the given ID is not found
 		        return "redirect:event-view"; // or show an error page

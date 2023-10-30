@@ -48,7 +48,7 @@
 				</tbody>
 			</table>
 		
-		<div><a href="task-form?name=${task.eventname}" class=" btn btn-success">Add Task</a></div>
+		<%-- <div><a href="task-form?name=${task.eventname}" class=" btn btn-success">Add Task</a></div> --%>
 		
 		</div>
 		

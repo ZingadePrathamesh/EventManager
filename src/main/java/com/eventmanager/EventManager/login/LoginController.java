@@ -126,12 +126,12 @@ public class LoginController {
 		private String userEventPage(ModelMap model, HttpSession session) {
 			String firstname = (String)session.getAttribute("firstname");
 		
-			List<Task> tasks = taskRepository.findByMember(firstname);
-			Task firstTask = tasks.get(0);
-			int eventName = firstTask.getEventId();
-		
-		
-//			model.addAttribute("events",events);
+//			List<Task> tasks = taskRepository.findByMember(firstname);
+//			Task firstTask = tasks.get(0);
+//			int eventName = firstTask.getEventId();
+//		
+//		
+			/* model.addAttribute("events",events); */
 			return "user_event_list";
 		}
 	

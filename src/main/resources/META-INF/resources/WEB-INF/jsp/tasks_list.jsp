@@ -51,7 +51,7 @@
 						</td>
 						<td>${task.domain}</td>
 						<td>${task.member}</td>
-						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}">Update</a></td>
+						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}&eventName=${task.eventname}">Update</a></td>
 						<td><a class ="btn btn-warning" href = "delete-task?taskId=${task.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
@@ -92,7 +92,7 @@
 						</td>
 						<td>${task.domain}</td>
 						<td>${task.member}</td>
-						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}">Update</a></td>
+						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}&eventName=${task.eventname}">Update</a></td>
 						<td><a class ="btn btn-warning" href = "delete-task?taskId=${task.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
@@ -133,7 +133,7 @@
 						</td>
 						<td>${task.domain}</td>
 						<td>${task.member}</td>
-						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}">Update</a></td>
+						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}&eventName=${task.eventname}">Update</a></td>
 						<td><a class ="btn btn-warning" href = "delete-task?taskId=${task.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
