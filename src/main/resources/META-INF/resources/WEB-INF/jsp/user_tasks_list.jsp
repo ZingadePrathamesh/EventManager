@@ -42,7 +42,7 @@
 							    </c:if>
 						    </td>
 							<td><a class = "btn btn-primary" href = "update-user-tasks-list?id=${task.id}">Update</a></td>
-							<td><a class ="btn btn-secondary" href = "event-view?id=${task.id}">View</a></td>
+							<td><a class ="btn btn-secondary" href = "user-task-view?taskId=${task.id}">View</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

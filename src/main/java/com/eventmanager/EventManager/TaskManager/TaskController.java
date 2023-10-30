@@ -267,7 +267,19 @@ public class TaskController {
 			return "redirect:event-view?eventId="+eventId + "&eventName="+event.getEventName();
 		}
 		
-		
+		//shows the user task view
+		@RequestMapping("user-task-view")
+		private String showUserTaskView(ModelMap model, @RequestParam int taskId) {
+			Task task = taskRepository.findById(taskId).get();
+			
+			String taskStatus;
+			if(task.getisDone())taskStatus = "Completed";
+			else if(LocalDate.now().isBefore(task.getDeadline())) taskStatus = "Overdue!";
+			else taskStatus = "Pending";
+			model.put("taskStatus", taskStatus);
+			model.put("task", task);
+			return "user_task_view";
+		}
 		
 		
 }
