@@ -1,6 +1,7 @@
 package com.eventmanager.EventManager.login;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.eventmanager.EventManager.Security.AuthentificationService;
 import com.eventmanager.EventManager.TaskManager.Task;
 import com.eventmanager.EventManager.TaskManager.TaskRepository;
-import com.eventmanager.EventManager.event.Event;
 import com.eventmanager.EventManager.event.EventRepository;
 import com.eventmanager.EventManager.user.MemberRepository;
 
@@ -60,7 +60,14 @@ public class LoginController {
 			// redirecting to homepage
 			//taking tasks from repository and showing it in the user home page task list
 			List<Task> tasks = taskRepository.findByMember(firstname);
-			model.addAttribute("tasks",tasks);
+
+			//filtering the task from pending to completed so as to show only pending task on the homepage
+			List<Task> pendingTask = tasks.stream()
+			    .filter(task -> !task.getisDone())
+			    .collect(Collectors.toList());
+
+					
+			model.addAttribute("tasks",pendingTask);
 			return "user_homepage";
 		}
 		else
@@ -80,7 +87,13 @@ public class LoginController {
 		String firstname = (String)session.getAttribute("firstname");
 		
 		List<Task> tasks = taskRepository.findByMember(firstname);
-		model.addAttribute("tasks",tasks);
+		
+		//filtering the task from pending to completed so as to show only pending task on the homepage
+		List<Task> pendingTask = tasks.stream()
+		    .filter(task -> !task.getisDone())
+		    .collect(Collectors.toList());
+		
+		model.addAttribute("tasks",pendingTask);
 		
 		return "user_homepage";
 	}
