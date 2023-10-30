@@ -55,13 +55,13 @@
         <h1>SIGCE</h1>
         <h2>Event Management</h2>
         <nav>
-            <a href="homepage">HOME</a>
+           <!--  <a href="homepage">HOME</a>
             <a href="#">ABOUT</a>
             <a href="admin-event-list">EVENTS</a>
             <a href="https://calendar.google.com/calendar">CALENDAR</a>
-            <!-- <a href="#">GALLERY</a>
-            <a href="#">SPEAKER</a> -->
-            <a href="#">CONTACT</a>
+            <a href="#">GALLERY</a>
+            <a href="#">SPEAKER</a>
+            <a href="#">CONTACT</a> -->
         </nav>
           
     </header>

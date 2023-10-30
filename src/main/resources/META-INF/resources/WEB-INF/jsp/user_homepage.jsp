@@ -121,7 +121,13 @@
 									<td>${task.eventname}</td> 
 									<td>${task.taskName}</td>
 									<td>${task.deadline}</td>
-									<td>${task.isDone}</td>
+									<td><c:if test="${!task.isDone}">
+							     	   Pending
+							    </c:if>
+							    <c:if test="${task.isDone}">
+							        Completed
+							    </c:if>
+						    </td>
 								</tr>
 							</c:forEach>	
 						</tbody>

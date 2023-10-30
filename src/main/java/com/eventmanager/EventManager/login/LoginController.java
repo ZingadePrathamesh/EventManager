@@ -1,6 +1,5 @@
 package com.eventmanager.EventManager.login;
 
-import java.lang.reflect.Member;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.eventmanager.EventManager.Security.AuthentificationService;
 import com.eventmanager.EventManager.TaskManager.Task;
 import com.eventmanager.EventManager.TaskManager.TaskRepository;
+import com.eventmanager.EventManager.event.Event;
+import com.eventmanager.EventManager.event.EventRepository;
 import com.eventmanager.EventManager.user.MemberRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -24,13 +25,15 @@ public class LoginController {
 	private AuthentificationService authentificationService;
 	private TaskRepository taskRepository;
 	private MemberRepository memberRepository;
+	private EventRepository eventRepository;
 
 	
-	public LoginController(AuthentificationService authentificationService,TaskRepository taskRepository,MemberRepository memberRepository) {
+	public LoginController(AuthentificationService authentificationService,TaskRepository taskRepository,MemberRepository memberRepository,EventRepository eventRepository) {
 		super();
 		this.authentificationService = authentificationService;
 		this.taskRepository = taskRepository;
 		this.memberRepository = memberRepository; 
+		this.eventRepository = eventRepository;
 	}
 
 	// landing page
@@ -65,10 +68,12 @@ public class LoginController {
 	}
 	
 	//from user homepage to user event list
-	@RequestMapping("user-event-list")
-	private String userEventPage() {
-		return "user_event_list";
-	}
+//	@RequestMapping("user-event-list")
+//	private String userEventPage() {
+//		return "user_event_list";
+//	}
+	
+	
 	//from user navbar to homepage
 	@RequestMapping("user_homepage")
 	private String userHomePage(ModelMap model, HttpSession session) {
@@ -84,20 +89,58 @@ public class LoginController {
 	@RequestMapping("user-tasks-list")
 	private String userTaskPage(ModelMap model, HttpSession session) {
 		String firstname = (String)session.getAttribute("firstname");
-		System.out.println("firstname "+firstname);
+		
 		List<Task> tasks = taskRepository.findByMember(firstname);
 		model.addAttribute("tasks",tasks);
 		return "user_tasks_list";
 	}
 	
 	
+	//updating task status in user task list 
+	@RequestMapping("update-user-tasks-list")
+	private String userTaskUpdate(ModelMap model, HttpSession session,@RequestParam int id) {
+		String firstname = (String)session.getAttribute("firstname");
+		System.out.println("firstname "+firstname);
+		List<Task> tasks = taskRepository.findByMember(firstname);
+		
+				Task tempTask= tasks.stream()
+			    .filter(task -> task.getId()==id).findFirst().get();
+				
+				
+				
+				if(tempTask.getisDone()==false) {
+					tempTask.setisDone(true);
+				}else {
+					tempTask.setisDone(false);
+				}
+				
+				taskRepository.save(tempTask);
+			
+		    
+		model.addAttribute("tasks",tasks);
+		return "redirect:user-tasks-list";
+	}
+	
+	//from user homepage to user event list
+		@RequestMapping("user-event-list")
+		private String userEventPage(ModelMap model, HttpSession session) {
+			String firstname = (String)session.getAttribute("firstname");
+		
+			List<Task> tasks = taskRepository.findByMember(firstname);
+			Task firstTask = tasks.get(0);
+			int eventName = firstTask.getEventId();
+		
+		
+//			model.addAttribute("events",events);
+			return "user_event_list";
+		}
 	
 	@RequestMapping("homepage")
 	private String eventManagerRedirectHomePage() {
 		return "homepage";
 	}
 
-	// profile page
+	//Redirecting to user profile page
 	@RequestMapping("profile-page-user")
 	private String eventManageUserProfilePage(ModelMap model, HttpSession session) {
 		String firstname = (String)session.getAttribute("firstname");
@@ -105,11 +148,15 @@ public class LoginController {
 		model.addAttribute("member",memberRepository.findByFirstname(firstname));
 		return "profile_user";
 	}
+
 	
+	//Redirecting to admin profile page
 	@RequestMapping("profile-page-admin")
 	private String eventManageAdminProfilePage() {
 		return "profile_admin";
 	}
+
+
 
 	// team page
 	@RequestMapping("team-page")
@@ -117,11 +164,14 @@ public class LoginController {
 		return "team";
 	}
   
+	//Redirecting to landing page on logout
 	@RequestMapping("landing-page")
 	private String logoutLandingPage() {
 		return "landing";
 	}
 	
+	
+	//Redirecting to about-us page
 	@RequestMapping("about-us")
 	private String eventManagerRedirectAboutPage() {
 		return "about";

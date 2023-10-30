@@ -1,6 +1,7 @@
 package com.eventmanager.EventManager.TaskManager;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -39,7 +40,24 @@ public class TaskController {
 	@RequestMapping("admin-tasks-list")
 	public String eventManagerTaskListPage(ModelMap model) {
 		List<Task> tasks = taskRepository.findByUsername("admin");
-		model.addAttribute("tasks",tasks);
+		
+		List<Task> completedTasks = new ArrayList<>();
+		List<Task> ongoingTasks = new ArrayList<>();
+		List<Task> upcomingTasks = new ArrayList<>();
+
+		for (Task task : tasks) {
+		  if (task.getisDone()) {
+		    completedTasks.add(task);
+		  } else if (task.getDeadline().isBefore(LocalDate.now().plusDays(5))) {
+		    ongoingTasks.add(task);
+		  } else {
+		    upcomingTasks.add(task);
+		  }
+		}
+		
+		model.addAttribute("completedTasks",completedTasks);
+		model.addAttribute("ongoingTasks",ongoingTasks);
+		model.addAttribute("upcomingTasks",upcomingTasks);
 		return "tasks_list";
 	}
 	

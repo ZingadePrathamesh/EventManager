@@ -17,28 +17,111 @@
 	    <h3>Tasks List</h3>
 	    <hr>
 	    <div class="container " >
+	    <h5>ongoing</h5>
 	    <table class = "table" >
-			<thead>
+			<thead style="background-color: #8E8FFA; color: black;">
 				<tr>
-					<th>ID</th>
-					<th>Event Name</th>
-					<th>Task Name</th>
-					<th>Description</th>
-					<th>Deadline</th>
-					<th>Status</th>
-					<th>Domain</th>
-					<th>Members</th>
-					<th></th>
-					<th></th>
+					<th width = 5%>ID</th>
+					<th width = 10%>Event Name</th>
+					<th width = 15%>Task Name</th>
+					<!-- <th width = 5%>Description</th> -->
+					<th width = 10%>Deadline</th>
+					<th width = 10%>Status</th>
+					<th width = 15%>Domain</th>
+					<th width = 12%>Members</th>
+					<th width = 10%></th>
+					<th width = 10%></th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items = "${tasks}" var = "task">
+				<c:forEach items = "${ongoingTasks}" var = "task">
 					<tr>
 						<td>${task.id}</td>
 						<td>${task.eventname}</td> 
 						<td>${task.taskName}</td>
-						<td>${task.description}</td>
+						<%-- <td>${task.description}</td> --%>
+						<td>${task.deadline}</td>
+						<td>
+							<c:if test="${!task.isDone}">
+						     	Pending   
+						    </c:if>
+						    <c:if test="${task.isDone}">
+						        Completed
+						    </c:if>
+						</td>
+						<td>${task.domain}</td>
+						<td>${task.member}</td>
+						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}">Update</a></td>
+						<td><a class ="btn btn-warning" href = "delete-task?taskId=${task.id}">Delete</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		
+		 <h5>upcoming</h5>
+		<table class = "table" >
+			<thead style="background-color: #8E8FFA; color: black;">
+				<tr>
+					<th width = 5%>ID</th>
+					<th width = 10%>Event Name</th>
+					<th width = 15%>Task Name</th>
+					<!-- <th width = 5%>Description</th> -->
+					<th width = 10%>Deadline</th>
+					<th width = 10%>Status</th>
+					<th width = 15%>Domain</th>
+					<th width = 12%>Members</th>
+					<th width = 10%></th>
+					<th width = 10%></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items = "${upcomingTasks}" var = "task">
+					<tr>
+						<td>${task.id}</td>
+						<td>${task.eventname}</td> 
+						<td>${task.taskName}</td>
+						<%-- <td>${task.description}</td> --%>
+						<td>${task.deadline}</td>
+						<td>
+							<c:if test="${!task.isDone}">
+						     	Pending   
+						    </c:if>
+						    <c:if test="${task.isDone}">
+						        Completed
+						    </c:if>
+						</td>
+						<td>${task.domain}</td>
+						<td>${task.member}</td>
+						<td><a class ="btn btn-primary" href = "update-task?id=${task.id}">Update</a></td>
+						<td><a class ="btn btn-warning" href = "delete-task?taskId=${task.id}">Delete</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		
+		 <h5>Completed</h5>
+		<table class = "table" >
+			<thead style="background-color: #8E8FFA; color: black;">
+				<tr>
+					<th width = 5%>ID</th>
+					<th width = 10%>Event Name</th>
+					<th width = 15%>Task Name</th>
+					<!-- <th width = 5%>Description</th> -->
+					<th width = 10%>Deadline</th>
+					<th width = 10%>Status</th>
+					<th width = 15%>Domain</th>
+					<th width = 12%>Members</th>
+					<th width = 10%></th>
+					<th width = 10%></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items = "${completedTasks}" var = "task">
+					<tr>
+						<td>${task.id}</td>
+						<td>${task.eventname}</td> 
+						<td>${task.taskName}</td>
+						<%-- <td>${task.description}</td> --%>
 						<td>${task.deadline}</td>
 						<td>
 							<c:if test="${!task.isDone}">

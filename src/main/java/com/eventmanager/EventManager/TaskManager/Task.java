@@ -32,6 +32,8 @@ public class Task {
 	private LocalDate deadline;
 	private String domain;
 	private boolean isDone;
+	
+	
 //    @Size(min = 1, message = "select atleast one member")
 	private String member;
 	
