@@ -53,7 +53,7 @@
 						<form:select path = "skill" class= "form-select">
 							<option value = "Management">Management</option>
 							<option value = "Promotion">Promotion</option>
-							<option value = "Graphic Desigin">Graphic Desigin</option>
+							<option value = "Graphic Design">Graphic Design</option>
 							<option value = "Cinematography">Cinematography</option>
 							<option value = "Social Media">Social Media</option>
 							<option value = "Content Curation">Content Curation</option>
