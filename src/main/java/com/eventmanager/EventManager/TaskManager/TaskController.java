@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
@@ -16,24 +15,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.eventmanager.EventManager.event.Event;
 import com.eventmanager.EventManager.event.EventRepository;
+import com.eventmanager.EventManager.user.EnrolledEvent;
+import com.eventmanager.EventManager.user.EnrolledEventRepository;
 import com.eventmanager.EventManager.user.Member;
 import com.eventmanager.EventManager.user.MemberRepository;
-import com.eventmanager.EventManager.event.*;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
 public class TaskController {
-
+	
+	private EnrolledEventRepository enrolledEventRepository;
+	
 	private TaskRepository taskRepository;
 	private EventRepository eventRepository;
 	private MemberRepository memberRepository;
-	public TaskController(TaskRepository taskRepository, MemberRepository memberRepository , EventRepository eventRepository) {
+	public TaskController(TaskRepository taskRepository, MemberRepository memberRepository , 
+			EventRepository eventRepository, EnrolledEventRepository enrolledEventRepository) {
 		super();
 		this.taskRepository = taskRepository;
 		this.memberRepository = memberRepository;
 		this.eventRepository = eventRepository;
+		this.enrolledEventRepository = enrolledEventRepository;
 	}
 
 	// Task list method
@@ -94,6 +98,9 @@ public class TaskController {
 				return "task_form";
 			}
 			
+			enrolledEventRepository.save(new EnrolledEvent(0, 
+					task.getEventname(), task.getMember(), task.getTaskName()));
+			
 			List<Task> tasks = taskRepository.findByUsername("admin");
 			
 		
@@ -134,7 +141,10 @@ public class TaskController {
 		@RequestMapping(value="task-form-from-event",method=RequestMethod.POST)
 		public String eventViewTaskSubmitPage(ModelMap model, Task task) {
 			
-
+			//mapping the member with the event
+			enrolledEventRepository.save(new EnrolledEvent(0, 
+					task.getEventname(), task.getMember(), task.getTaskName()));
+			
 			List<Task> tasks = taskRepository.findByUsername("admin");
 			
 			task.setUsername("admin");
@@ -209,6 +219,7 @@ public class TaskController {
 		
 		@RequestMapping(value = "update-update-task", method = RequestMethod.POST)
 		private String postUpdateTaskForm(ModelMap model, @Valid Task task) {
+			
 			int id = task.getId();
 			
 			taskRepository.deleteById(id);
@@ -224,12 +235,20 @@ public class TaskController {
 		//for deleting tasks
 		@RequestMapping("delete-task")
 		private String deleteTask(@RequestParam(required = true) int taskId) {
+			
+			String taskName = taskRepository.findById(taskId).get().getTaskName();
+			//deleting the enrolled event to the member as the task is being deleted
+			enrolledEventRepository.delete(enrolledEventRepository.findByTaskName(taskName));
+			
 			taskRepository.deleteById(taskId);
 			return "redirect:admin-tasks-list";
 		}
 		
 		@RequestMapping("delete-task-from-view")
 		private String deleteTaskFromView(ModelMap model,@Valid Task task,@RequestParam(required = true) int taskId) {
+			
+			//deleting the enrolled event to the member as the task is being deleted
+			enrolledEventRepository.delete(enrolledEventRepository.findByTaskName(task.getTaskName()));
 			
 			int eventId = task.getEventId();
 			

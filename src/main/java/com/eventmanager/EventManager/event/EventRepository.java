@@ -2,7 +2,6 @@ package com.eventmanager.EventManager.event;
 
 import java.util.List;
 
-import org.hibernate.annotations.NamedQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

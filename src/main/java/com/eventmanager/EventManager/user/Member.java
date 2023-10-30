@@ -1,14 +1,20 @@
 package com.eventmanager.EventManager.user;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 
+/**
+ * 
+ */
 @Entity
 public class Member {
 	
@@ -46,6 +52,7 @@ public class Member {
     @NotBlank(message = "Password is required.")
     @Size(min = 2, message = "Password must be at least 2 characters.")
     private String password;
+    
 
     // Getters and setters
 
@@ -55,7 +62,6 @@ public class Member {
                 + age + ", password=" + password + "]";
     }
 	
-
 
 	public int getId() {
 		return id;
