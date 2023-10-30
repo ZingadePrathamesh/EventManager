@@ -8,18 +8,19 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>Event Manager And Assistant</title>
 	    <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="./event_view.css">
 	</head>
 
 	<body style="margin-bottom:50px;">
 		<%@ include file = "common/admin_navbar.jspf" %>
 		
 		<div class = "container">
-			<h5><strong>Event name:</strong> ${event.eventName} </h5>
+			<h6><strong>Event name:</strong> ${event.eventName} </h6>
 			<hr>
-			<h5><strong>Event description:</strong> ${event.description} </h5> <hr>
-			<h5><strong>status:</strong> ${event.status} </h5> <hr>
-			<h5><strong>start date:</strong> ${event.startDate} </h5> <hr>
-			<h5><strong>end date:</strong> ${event.endDate} </h5> <hr>
+			<h6><strong>Event description:</strong> ${event.description} </h6> <hr>
+			<h6><strong>Status:</strong> ${event.status} </h6> <hr>
+			<h6><strong>Start date:</strong> ${event.startDate} </h6> <hr>
+			<h6><strong>End date:</strong> ${event.endDate} </h6> <hr>
 		</div>
 
  		<div class =  "container" style="margin-top:20px; margin-bottom:20px ">

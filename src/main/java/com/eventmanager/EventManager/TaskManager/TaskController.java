@@ -49,14 +49,14 @@ public class TaskController {
 		
 		List<Task> completedTasks = new ArrayList<>();
 		List<Task> ongoingTasks = new ArrayList<>();
-		List<Task> upcomingTasks = new ArrayList<>();
+		List<Task> overdueTasks = new ArrayList<>();
 
 		
 			for(Task task : tasks) {
 				if (task.getisDone()) {
 			    completedTasks.add(task);
-			  } else if (LocalDate.now().plusDays(5).isBefore(task.getDeadline())) {
-				  upcomingTasks.add(task);
+			  } else if (LocalDate.now().isBefore(task.getDeadline())) {
+				  overdueTasks.add(task);
 				  
 			  } else {
 				  ongoingTasks.add(task);
@@ -65,7 +65,7 @@ public class TaskController {
 		
 		model.addAttribute("completedTasks",completedTasks);
 		model.addAttribute("ongoingTasks",ongoingTasks);
-		model.addAttribute("upcomingTasks",upcomingTasks);
+		model.addAttribute("overdueTasks",overdueTasks);
 		return "tasks_list";
 	}
 	
@@ -97,6 +97,7 @@ public class TaskController {
 			if(result.hasErrors()) {
 				return "task_form";
 			}
+			
 			
 			enrolledEventRepository.save(new EnrolledEvent(0, 
 					task.getEventname(), task.getMember(), task.getTaskName()));

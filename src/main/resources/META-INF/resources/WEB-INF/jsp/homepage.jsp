@@ -35,7 +35,31 @@
 	        </div>
 	    </div>
 	    
-	    <div>
+	    <div class = "ongoing-event-list">
+	    	<div class = "container">
+	    		<table class = "table" style="margin-bottom: 40px;">
+					<thead style="background-color: #8E8FFA; color: black;" >
+						<tr>
+							<th width = 36%>Name</th>
+							<th width = 12%>Start Date</th>
+							<th width = 12%>End Date</th>
+							<th width = 12%></th>
+							<th width = 11%></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items = "${ongoingEvents}" var = "event">
+							<tr>
+								<td>${event.eventName}</td>
+								<td>${event.startDate}</td>
+								<td>${event.endDate}</td>
+								<td><a class ="btn btn-primary" href = "update-event?id=${event.eventId}">Update</a></td>
+								<td><a href ="event-view?eventName=${event.eventName}&eventId=${event.eventId}" class ="btn btn-secondary" >View</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+	    	</div>
 	    	
 	    </div>
 		</body>

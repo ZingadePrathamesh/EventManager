@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.eventmanager.EventManager.Security.AuthentificationService;
 import com.eventmanager.EventManager.TaskManager.Task;
 import com.eventmanager.EventManager.TaskManager.TaskRepository;
+import com.eventmanager.EventManager.event.Event;
 import com.eventmanager.EventManager.event.EventRepository;
 import com.eventmanager.EventManager.user.MemberRepository;
 
@@ -52,7 +53,9 @@ public class LoginController {
 	@RequestMapping(value = "loginpage", method = RequestMethod.POST)
 	private String eventManagerHomePage( ModelMap model,@RequestParam String firstname,@RequestParam String password, HttpSession session) {
 			
-		if(authentificationService.authenticateAdmin(firstname, password)) {
+			if(authentificationService.authenticateAdmin(firstname, password)) {
+				List<Event> ongoingEvents = eventRepository.findByStatus("Ongoing");
+				model.put("ongoingEvents", ongoingEvents);
 				return "homepage";
 			}
 			else if(authentificationService.authenticateUser(firstname, password)) {
@@ -137,7 +140,9 @@ public class LoginController {
 
 	
 	@RequestMapping("homepage")
-	private String eventManagerRedirectHomePage() {
+	private String eventManagerRedirectHomePage(ModelMap model) {
+		List<Event> ongoingEvents = eventRepository.findByStatus("Ongoing");
+		model.put("ongoingEvents", ongoingEvents);
 		return "homepage";
 	}
 
