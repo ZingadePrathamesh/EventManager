@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Task {
@@ -20,11 +22,17 @@ public class Task {
 	private int eventId;
 	private String eventname;
 	private String username;
+	
+
+    @Size(min = 5, message ="should have atleast 5 Character")
 	private String taskName;
+
+    @Size(min = 5, max = 500)
 	private String description;
 	private LocalDate deadline;
 	private String domain;
 	private boolean isDone;
+//    @Size(min = 1, message = "select atleast one member")
 	private String member;
 	
 	public Task(int id, int eventId, String eventname, String username, String taskName, String description,

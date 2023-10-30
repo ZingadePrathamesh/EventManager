@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,7 +66,11 @@ public class TaskController {
 	//Post-method 
 	//post method for task form
 		@RequestMapping(value="task-form",method=RequestMethod.POST)
-		public String eventManagerTaskSubmitPage(ModelMap model,Task task) {
+		public String eventManagerTaskSubmitPage(ModelMap model,@Valid Task task , BindingResult result) {
+			
+			if(result.hasErrors()) {
+				return "task_form";
+			}
 			
 			List<Task> tasks = taskRepository.findByUsername("admin");
 			

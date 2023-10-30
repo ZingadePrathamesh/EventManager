@@ -51,6 +51,7 @@
                 <fieldset class="mb-3">
                     <form:label path="domain">Domain</form:label>
                     <form:select path="domain" class="form-select" id="domainSelect">
+                        <option value="">Select</option>
                         <option value="Management">Management</option>
                         <option value="Promotion">Promotion</option>
                         <option value="Graphic Design">Graphic Design</option>
@@ -65,7 +66,7 @@
                 <fieldset class="mb-3">
                     <form:label path="member">Members</form:label>
                     <form:select path="member" class="form-select" id="memberSelect">
-                        <option value="All">All</option> <!-- Add the "All" option to show all members initially -->
+                        <option value="">select</option> <!-- Add the "All" option to show all members initially -->
                         <c:forEach items="${members}" var="member">
                             <option value="${member.firstname}" data-skill="${member.skill}">${member.firstname}</option>
                         </c:forEach>
@@ -76,6 +77,7 @@
                 <fieldset class="mb-3">
                     <form:label path="eventname">Event Name</form:label>
                     <form:select path="eventname" class="form-select">
+                    	<option value="">select</option>
                         <c:forEach items="${events}" var="event">
                             <option value="${event.eventName}">${event.eventName}</option>
                         </c:forEach>
