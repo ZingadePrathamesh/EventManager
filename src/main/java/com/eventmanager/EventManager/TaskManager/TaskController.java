@@ -55,7 +55,7 @@ public class TaskController {
 			for(Task task : tasks) {
 				if (task.getisDone()) {
 			    completedTasks.add(task);
-			  } else if (LocalDate.now().isBefore(task.getDeadline())) {
+			  } else if (LocalDate.now().isAfter(task.getDeadline())) {
 				  overdueTasks.add(task);
 				  
 			  } else {
