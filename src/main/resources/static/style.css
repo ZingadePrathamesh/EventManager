@@ -9,6 +9,7 @@ body {
     background-size: cover;
     background-position: center;
     animation: fadeIn 2s;
+	backdrop-filter: blur(2px);
   }
   
   @keyframes fadeIn {
