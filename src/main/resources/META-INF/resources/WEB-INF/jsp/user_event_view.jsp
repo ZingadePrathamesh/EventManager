@@ -8,6 +8,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>Event Manager And Assistant</title>
 	    <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+	     <link rel="stylesheet" href="./event_view.css">
 	</head>
 
 	<body>
@@ -26,9 +27,9 @@
 			<%@ include file = "common/tasklist.jspf" %>
 		</div>
 		
-		<div>
+		<%-- <div>
 			<a href ="delete-event?eventId=${event.eventId}" class="btn btn-success">Delete</a>
-		</div>
+		</div> --%>
 		
 		
 		

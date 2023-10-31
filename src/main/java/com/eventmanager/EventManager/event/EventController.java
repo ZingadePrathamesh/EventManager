@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.eventmanager.EventManager.TaskManager.Task;
 import com.eventmanager.EventManager.TaskManager.TaskRepository;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -103,7 +104,11 @@ public class EventController {
 	// Get-Method for viewing Event
 	// it shows the event page
 	@RequestMapping(value = "event-view", method = RequestMethod.GET)
-	private String getEventView(ModelMap model , @RequestParam(required = false) String eventName,@RequestParam int eventId) {
+	private String getEventView(ModelMap model , @RequestParam(required = false) String eventName,
+			@RequestParam int eventId, HttpSession session) {
+		
+		String firstname = (String)session.getAttribute("firstname");
+		
 		
 //		Event event = eventService.findByName(name);
 		Event event = eventRepository.findByEventName(eventName);
@@ -114,7 +119,27 @@ public class EventController {
 //		tasks.add(new Task(9, 9, "Party", "user", "games", "gkabf", LocalDate.now().plusYears(2), "Management", true));
 		model.put("event", event);
 		model.put("tasks", tasks);
+		
 		return "event_view";
+	}
+	// Get-Method for viewing Event
+	// it shows the event page
+	@RequestMapping(value = "user-event-view", method = RequestMethod.GET)
+	private String getUserEventView(ModelMap model , @RequestParam(required = false) String eventName,
+			@RequestParam int eventId, HttpSession session) {
+				
+		
+//		Event event = eventService.findByName(name);
+		Event event = eventRepository.findByEventName(eventName);
+		List<Task> tasks = taskRepository.findByEventname(eventName);
+		
+//		System.out.println("eventId :"+eventId);
+		
+//		tasks.add(new Task(9, 9, "Party", "user", "games", "gkabf", LocalDate.now().plusYears(2), "Management", true));
+		model.put("event", event);
+		model.put("tasks", tasks);
+		
+		return "user_event_view";
 	}
 	
 	

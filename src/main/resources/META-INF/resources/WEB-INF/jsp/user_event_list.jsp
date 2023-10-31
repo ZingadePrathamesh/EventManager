@@ -32,7 +32,7 @@
 						<td>${event.eventName}</td>
 						<td>${event.startDate}</td>
 						<td>${event.status}</td>
-						<td><a href ="event-view?eventName=${event.eventName}" class ="btn btn-success" >View</a></td>
+						<td><a href ="user-event-view?eventName=${event.eventName}&eventId=${event.eventId}" class ="btn btn-success" >View</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
