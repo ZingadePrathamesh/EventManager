@@ -57,7 +57,8 @@
 						</td>
 						<%-- <td>${task.domain}</td> --%>
 						<td>${task.member}</td>
-						<td><a class ="btn btn-primary" href = "update-update-task?id=${task.id}&eventId=${task.eventId}&eventName=${task.eventname}">Update</a></td>
+						<td><a class = "btn btn-primary" href = "update-user-tasks-list?id=${task.id}">Update</a></td>
+							<td><a class ="btn btn-secondary" href = "user-task-view?taskId=${task.id}">View</a></td>
 						<%-- <td><a class ="btn btn-warning" href = "delete-task-from-view?taskId=${task.id}&eventId=${task.eventId}">Delete</a></td> --%>
 						<input type="hidden" name="eventId" value="${task.eventId}">
 					</tr>

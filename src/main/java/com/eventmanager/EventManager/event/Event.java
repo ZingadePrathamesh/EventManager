@@ -42,7 +42,7 @@ public class Event {
     @Future(message = "Enter a valid start date.")
     private LocalDate startDate;
     
-	private LocalDate endDate;
+ 	private LocalDate endDate;
 	
 	private String status;
 	

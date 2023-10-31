@@ -52,8 +52,13 @@
     </div> -->
     
     <header>
-        <h1>SIGCE</h1>
-        <h2>Event Management</h2>
+    	<p style = "font-size:48px; margin:0; font-weight:bold;" >EVENT SCHEDULER AND ASSISTANT</p>
+      	<P style = "font-size: 32px; margin:0;">Event Management</P>
+
+    	
+    	
+
+        
         <nav>
            <!--  <a href="homepage">HOME</a>
             <a href="#">ABOUT</a>
